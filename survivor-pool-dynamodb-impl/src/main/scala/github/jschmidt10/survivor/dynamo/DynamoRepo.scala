@@ -13,7 +13,6 @@ import java.io.Closeable
  */
 trait DynamoRepo extends Closeable {
 
-  val MetadataName = ".metadata"
   val dynamo = new AmazonDynamoDBClient
 
   def pir(tableName: String, item: JMap[String, AttributeValue]) =

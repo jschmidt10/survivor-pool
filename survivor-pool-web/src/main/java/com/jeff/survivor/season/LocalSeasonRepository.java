@@ -3,8 +3,6 @@ package com.jeff.survivor.season;
 import java.util.Set;
 import java.util.TreeSet;
 
-import org.springframework.stereotype.Repository;
-
 import github.jschmidt10.survivor.api.Contestant;
 import github.jschmidt10.survivor.api.Season;
 import github.jschmidt10.survivor.api.repo.SeasonRepository;

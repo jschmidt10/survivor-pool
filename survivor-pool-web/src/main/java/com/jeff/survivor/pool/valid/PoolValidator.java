@@ -1,8 +1,6 @@
 package com.jeff.survivor.pool.valid;
 
-import java.util.Set;
-
-import github.jschmidt10.survivor.api.Player;
+import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.api.Season;
 
 /**
@@ -13,10 +11,10 @@ public interface PoolValidator {
 	/**
 	 * Checks a rule and throws a {@link RuleViolationException} if an error is detected.
 	 * 
-	 * @param players
+	 * @param pool
 	 * @param season
 	 */
-	void validate(Set<Player> players, Season season) throws RuleViolationException;
+	void validate(Pool pool, Season season) throws RuleViolationException;
 
 	/**
 	 * A rule violation.

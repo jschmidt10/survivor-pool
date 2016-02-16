@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Repository;
 
 import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.api.repo.PoolRepository;

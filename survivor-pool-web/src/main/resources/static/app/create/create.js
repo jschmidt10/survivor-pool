@@ -53,7 +53,7 @@ module.controller('CreateController', [
 
 			// Adds a new player to the pool
 			$scope.addPlayer = function(playerName) {
-				if (!playerExists(playerName)) {
+				if (playerName && !playerExists(playerName)) {
 					$scope.models.players.push({
 						name : playerName,
 						contestants : []

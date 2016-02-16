@@ -1,12 +1,12 @@
 package com.jeff.survivor.pool.valid;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
 import github.jschmidt10.survivor.api.Player;
+import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.api.Season;
 
 /**
@@ -16,8 +16,9 @@ import github.jschmidt10.survivor.api.Season;
 public class NonEmptyPlayers implements PoolValidator {
 
 	@Override
-	public void validate(Set<Player> players, Season season) throws RuleViolationException {
-		List<Player> emptyPlayers = players
+	public void validate(Pool pool, Season season) throws RuleViolationException {
+		List<Player> emptyPlayers = pool
+				.getPlayers()
 				.stream()
 				.filter((p) -> p.getContestants().isEmpty())
 				.collect(Collectors.toList());

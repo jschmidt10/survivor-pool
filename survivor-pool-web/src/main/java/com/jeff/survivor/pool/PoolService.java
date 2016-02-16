@@ -63,7 +63,7 @@ public class PoolService {
 	 */
 	private void validate(Pool pool, Season season) throws RuleViolationException {
 		for (PoolValidator validator : validators) {
-			validator.validate(pool.getPlayers(), season);
+			validator.validate(pool, season);
 		}
 	}
 

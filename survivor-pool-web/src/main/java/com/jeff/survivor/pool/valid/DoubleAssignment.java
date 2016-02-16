@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import github.jschmidt10.survivor.api.Contestant;
-import github.jschmidt10.survivor.api.Player;
+import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.api.Season;
 
 /**
@@ -17,8 +17,9 @@ import github.jschmidt10.survivor.api.Season;
 public class DoubleAssignment implements PoolValidator {
 
 	@Override
-	public void validate(Set<Player> players, Season season) throws RuleViolationException {
-		List<Contestant> contestants = players
+	public void validate(Pool pool, Season season) throws RuleViolationException {
+		List<Contestant> contestants = pool
+				.getPlayers()
 				.stream()
 				.flatMap((p) -> p.getContestants().stream())
 				.collect(Collectors.toList());
