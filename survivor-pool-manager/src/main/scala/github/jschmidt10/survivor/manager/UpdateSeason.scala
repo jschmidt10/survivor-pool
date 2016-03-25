@@ -14,9 +14,19 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue
 object UpdateSeason {
   private val TableName = "survivorpool_seasons"
   private val repo = new DynamoSeasonRepository(TableName)
-
+  private val Name = "Caleb Reynolds"
+  
   def main(args: Array[String]) {
-    println(repo.getCurrent.name)
+    val season = repo.getCurrent
+    
+    season
+      .getContestants
+      .asScala
+      .find(c => c.name == Name)
+      .foreach(c => c.status = "eliminated")
+    
+    repo.save(season)  
+    
     repo.close()
   }
 }

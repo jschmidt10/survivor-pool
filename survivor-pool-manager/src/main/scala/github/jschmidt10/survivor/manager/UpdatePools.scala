@@ -10,11 +10,30 @@ import github.jschmidt10.survivor.dynamo.PoolSerializer
  * Tool for updating pools.
  */
 object UpdatePools {
+  
   private val TableName = "survivorpool_pools"
   private val repo = new DynamoPoolRepository(TableName)
-
+  private val Name = "Caleb Reynolds"
+  
   def main(args: Array[String]) {
-    repo.getAll().asScala.foreach(p => println(p.name))
+    val pools = repo
+      .getAll()
+      .asScala
+
+    pools
+      .foreach(pool => {
+        pool
+          .getPlayers
+          .asScala
+    	    .flatMap(_.getContestants.asScala)
+    	    .find(c => c.name == Name)
+    	    .foreach(c => {
+    		    c.status = "eliminated" 
+    	    })
+        
+        repo.save(pool)  
+      })
+      
     repo.close()
   }
 }
