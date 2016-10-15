@@ -23,8 +23,8 @@
 		<div class="col-md-6 col-md-offset-1">
 			<button class="btn btn-primary" ng-click="createPool();">Create</button>
 		</div>
-		<div class="col-md-4">
-			<span class="error-text">{{errorMessage}}</span>
+		<div class="col-md-4" ng-show="errorMessage">
+			<span class="alert alert-danger error-text">{{errorMessage}}</span>
 		</div>
 	</div>
 	<div class="form-group">
