@@ -5,11 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import github.jschmidt10.survivor.api.Season;
 import github.jschmidt10.survivor.api.repo.PoolRepository;
 import github.jschmidt10.survivor.api.repo.SeasonRepository;
-import github.jschmidt10.survivor.h2.H2PoolRepository;
-import github.jschmidt10.survivor.h2.H2SeasonRepository;
-import github.jschmidt10.survivor.h2.HibernateUtils;
-import org.h2.tools.Server;
-import org.hibernate.SessionFactory;
+import github.jschmidt10.survivor.dynamo.DynamoPoolRepository;
+import github.jschmidt10.survivor.dynamo.DynamoSeasonRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,24 +22,26 @@ import java.io.InputStream;
 @ComponentScan
 public class SurvivorPoolWeb {
 
+    @Value("${dynamodb.pool.table}")
+    private String poolTable;
+
+    @Value("${dynamodb.season.table}")
+    private String seasonTable;
+
+
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Bean
-    public SessionFactory sessionFactory() {
-        return HibernateUtils.defaultSessionFactory();
+    public PoolRepository poolRepository() {
+        return new DynamoPoolRepository(poolTable);
     }
 
     @Bean
-    public PoolRepository poolRepository(SessionFactory sessionFactory) {
-        return new H2PoolRepository(sessionFactory);
-    }
-
-    @Bean
-    public SeasonRepository seasonRepository(SessionFactory sessionFactory, ObjectMapper mapper) throws IOException {
-        SeasonRepository seasonRepo = new H2SeasonRepository(sessionFactory);
+    public SeasonRepository seasonRepository(ObjectMapper mapper) throws IOException {
+        SeasonRepository seasonRepo = new DynamoSeasonRepository(seasonTable);
 
         if (seasonRepo.getCurrent() == null) {
             InputStream seasonJson = getClass().getClassLoader().getResourceAsStream("current_season.json");
@@ -53,16 +53,6 @@ public class SurvivorPoolWeb {
     }
 
     public static void main(String[] args) throws Exception {
-        final Server server = Server.createTcpServer("-tcpPort", "9123");
-        server.start();
-
-        Runtime.getRuntime().addShutdownHook(new Thread() {
-            @Override
-            public void run() {
-                server.stop();
-            }
-        });
-
         SpringApplication.run(SurvivorPoolWeb.class, args);
     }
 }

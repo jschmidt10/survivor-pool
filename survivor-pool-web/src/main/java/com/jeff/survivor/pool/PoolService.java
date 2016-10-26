@@ -38,8 +38,7 @@ public class PoolService {
 	/**
 	 * Creates a new pool
 	 * 
-	 * @param ownerEmail
-	 * @param playerAssignments
+	 * @param pool
 	 * @return
 	 * @throws UnsupportedEncodingException 
 	 * @throws RuleViolationException 
@@ -57,9 +56,9 @@ public class PoolService {
 
 	/**
 	 * Validates player assignments are valid
+	 * @param pool
 	 * @param season
-	 * @param playerAssignments
-	 * @throws RuleViolationException 
+	 * @throws RuleViolationException
 	 */
 	private void validate(Pool pool, Season season) throws RuleViolationException {
 		for (PoolValidator validator : validators) {

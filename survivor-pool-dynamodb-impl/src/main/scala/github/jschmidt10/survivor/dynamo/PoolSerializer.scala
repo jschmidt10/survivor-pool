@@ -1,14 +1,12 @@
 package github.jschmidt10.survivor.dynamo
 
-import java.util.{ Map => JMap }
-import java.util.{ Set => JSet }
+import java.util.{Map => JMap, Set => JSet}
+
 import com.amazonaws.services.dynamodbv2.model.AttributeValue
-import github.jschmidt10.survivor.api.Season
 import com.fasterxml.jackson.databind.ObjectMapper
-import github.jschmidt10.survivor.api.Contestant
+import github.jschmidt10.survivor.api.{Player, Pool}
+
 import scala.collection.JavaConverters._
-import github.jschmidt10.survivor.api.Player
-import github.jschmidt10.survivor.api.Pool
 
 /**
  * Handles serializing a Season to/from dynamo.
@@ -36,6 +34,7 @@ object PoolSerializer {
    */
   def toItem(pool: Pool): JMap[String, AttributeValue] =
     Map(
+      "id" -> new AttributeValue(DynamoPoolRepository.getId(pool)),
       "name" -> new AttributeValue(pool.name),
       "url" -> new AttributeValue(pool.url),
       "players" -> new AttributeValue(mapper.writeValueAsString(pool.players))).asJava

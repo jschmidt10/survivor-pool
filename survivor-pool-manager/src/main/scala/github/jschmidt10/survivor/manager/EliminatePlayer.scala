@@ -12,9 +12,9 @@ import github.jschmidt10.survivor.dynamo.DynamoSeasonRepository
  */
 object EliminatePlayer {
 
-  private val SeasonTable = "survivorpool_seasons"
-  private val PoolTable = "survivorpool_pools"
-  private val EliminatedPlayer = "Kyle Jason"
+  private val SeasonTable = "survivorpool"
+  private val PoolTable = "survivorpool"
+  private val EliminatedPlayer = "Lucy"
 
   def main(args: Array[String]) {
 	  val poolRepo = new DynamoPoolRepository(PoolTable)

@@ -1,25 +1,14 @@
 package github.jschmidt10.survivor.dynamo
 
-import java.util.{ List => JList }
-import java.util.{ Map => JMap }
-import java.util.{ Set => JSet }
-import java.util.TreeSet
-import scala.collection.JavaConverters._
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient
-import com.amazonaws.services.dynamodbv2.model.AttributeValue
-import com.amazonaws.services.dynamodbv2.model.GetItemRequest
-import com.amazonaws.services.dynamodbv2.model.PutItemRequest
-import com.fasterxml.jackson.databind.ObjectMapper
-import github.jschmidt10.survivor.api.Contestant
+import com.amazonaws.services.dynamodbv2.model.ScanRequest
 import github.jschmidt10.survivor.api.Season
 import github.jschmidt10.survivor.api.repo.SeasonRepository
-import com.fasterxml.jackson.core.`type`.TypeReference
-import github.jschmidt10.survivor.api.repo.PoolRepository
-import com.amazonaws.services.dynamodbv2.model.ScanRequest
+
+import scala.collection.JavaConverters._
 
 /**
- * A DynamoDB backed implementation of a SeasonRepository.
- */
+  * A DynamoDB backed implementation of a SeasonRepository.
+  */
 class DynamoSeasonRepository(seasonTable: String) extends SeasonRepository with DynamoRepo {
 
   override def save(season: Season): Boolean = {
@@ -33,9 +22,33 @@ class DynamoSeasonRepository(seasonTable: String) extends SeasonRepository with 
       .withFilterExpression("isCurrent = :isCur")
       .withExpressionAttributeValues(Map(":isCur" -> av("true")).asJava))
 
-    SeasonSerializer.fromItem(results
+    val items = results
       .getItems
       .asScala
-      .head)
+
+    if (items.isEmpty)
+      null
+    else
+      SeasonSerializer.fromItem(items.head)
   }
+}
+
+object DynamoSeasonRepository {
+  val SeasonPrefix = "SEASON:"
+
+  /**
+    * Gets the dynamo table id
+    *
+    * @param seasonName
+    * @return season id
+    */
+  def getId(seasonName: String): String = SeasonPrefix + seasonName
+
+  /**
+    * Gets the dynamo table id
+    *
+    * @param season
+    * @return season id
+    */
+  def getId(season: Season): String = getId(season.name)
 }

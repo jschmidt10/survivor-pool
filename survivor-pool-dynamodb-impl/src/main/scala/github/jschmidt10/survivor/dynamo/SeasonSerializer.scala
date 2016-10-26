@@ -34,8 +34,9 @@ object SeasonSerializer {
    */
   def toItem(season: Season): JMap[String, AttributeValue] =
     Map(
+      "id" -> new AttributeValue(DynamoSeasonRepository.getId(season)),
       "name" -> new AttributeValue(season.name),
-      "isCurrent" -> new AttributeValue(season.isCurrent.toString),
+      "isCurrent" -> new AttributeValue(season.current.toString),
       "contestants" -> new AttributeValue(
         mapper.writeValueAsString(season.contestants))).asJava
 }

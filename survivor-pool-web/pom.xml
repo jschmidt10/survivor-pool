@@ -28,18 +28,8 @@
         </dependency>
         <dependency>
             <groupId>github.jschmidt10.survivor</groupId>
-            <artifactId>survivor-pool-hsqldb-impl</artifactId>
+            <artifactId>survivor-pool-dynamodb-impl</artifactId>
             <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.3.Final</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

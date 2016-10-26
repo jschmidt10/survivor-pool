@@ -10,10 +10,6 @@
 
 	<artifactId>survivor-pool-api</artifactId>
 
-	<properties>
-		<scala.version>2.11.7</scala.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.scala-lang</groupId>
