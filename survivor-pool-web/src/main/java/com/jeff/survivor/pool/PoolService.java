@@ -47,10 +47,10 @@ public class PoolService {
 		Season season = seasonRepository.getCurrent();
 
 		validate(pool, season);
-		
+
 		String url = URLEncoder.encode(pool.getName(), ENCODING);
 		pool.setUrl(url);
-		
+
 		return poolRepository.save(pool);
 	}
 

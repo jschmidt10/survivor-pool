@@ -11,28 +11,29 @@ import github.jschmidt10.survivor.dynamo.PoolSerializer
  */
 object UpdatePools {
   
-  private val TableName = "survivorpool_pools"
+  private val TableName = "survivorpool"
   private val repo = new DynamoPoolRepository(TableName)
-  private val Name = "Caleb Reynolds"
-  
+
   def main(args: Array[String]) {
     val pools = repo
       .getAll()
       .asScala
 
-    pools
-      .foreach(pool => {
-        pool
-          .getPlayers
-          .asScala
-    	    .flatMap(_.getContestants.asScala)
-    	    .find(c => c.name == Name)
-    	    .foreach(c => {
-    		    c.status = "eliminated" 
-    	    })
-        
-        repo.save(pool)  
-      })
+    pools.foreach(println)
+
+//    pools
+//      .foreach(pool => {
+//        pool
+//          .getPlayers
+//          .asScala
+//    	    .flatMap(_.getContestants.asScala)
+//    	    .find(c => c.name == Name)
+//    	    .foreach(c => {
+//    		    c.status = "eliminated"
+//    	    })
+//
+//        repo.save(pool)
+//      })
       
     repo.close()
   }

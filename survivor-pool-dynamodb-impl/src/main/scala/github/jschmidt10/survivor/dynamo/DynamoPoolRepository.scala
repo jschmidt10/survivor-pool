@@ -24,7 +24,7 @@ class DynamoPoolRepository(poolTable: String) extends PoolRepository with Dynamo
 
   override def getByName(name: String): Pool = {
     val response = dynamo.getItem(gir(poolTable, "id", DynamoPoolRepository.getId(name)))
-    PoolSerializer.fromItem(response.getItem)
+    Option(response.getItem).map(item => PoolSerializer.fromItem(item)).getOrElse(null)
   }
 
   override def save(pool: Pool): Boolean = {
