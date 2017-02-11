@@ -1,10 +1,8 @@
-var module = angular.module('survivor.find', []);
+var module = angular.module('survivor.find', [ 'survivor.config' ]);
 
-module.controller('FindController', [ '$scope', '$http',
-		function($scope, $http) {
-			var fetchUrl = "pool/search";
-
-			$http.get(fetchUrl).success(function(results) {
+module.controller('FindController', [ '$scope', '$http', 'appConfig',
+		function($scope, $http, appConfig) {
+			$http.get(appConfig.rest.getPools).success(function(results) {
 				if (results.success) {
 					$scope.pools = results.data;
 				}

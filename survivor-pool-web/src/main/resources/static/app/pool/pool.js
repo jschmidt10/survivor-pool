@@ -1,22 +1,22 @@
-var module = angular.module('survivor.pool', []);
+var module = angular.module('survivor.pool', [ 'survivor.config' ]);
 
 module.controller('PoolController', [
 		'$scope',
 		'$http',
 		'$routeParams',
-		function($scope, $http, $routeParams) {
-			var fetchUrl = "pool";
+		'appConfig',
+		function($scope, $http, $routeParams, appConfig) {
 			var poolName = $routeParams.name;
 
-			$http.get(fetchUrl, {
+			$http.get(appConfig.rest.getPools, {
 				params : {
 					name : poolName
 				}
 			}).success(
 					function(results) {
-						if (results.success) {
-							$scope.pool = results.data;
-							$scope.maxContestantsPerPlayer = results.data.players
+						if (results.success && results.data.length == 1) {
+							$scope.pool = results.data[0];
+							$scope.maxContestantsPerPlayer = results.data[0].players
 									.reduce(function(max, cur) {
 										if (cur > max)
 											return cur;

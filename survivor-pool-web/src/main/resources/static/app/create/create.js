@@ -1,12 +1,11 @@
-var module = angular.module('survivor.create', [ 'dndLists' ]);
+var module = angular.module('survivor.create', [ 'dndLists', 'survivor.config' ]);
 
 module.controller('CreateController', [
 		'$scope',
 		'$http',
 		'$window',
-		function($scope, $http, $window) {
-			var fetchSeasonUrl = 'season/current';
-			var createPoolUrl = 'pool';
+		'appConfig',
+		function($scope, $http, $window, appConfig) {
 			var viewPoolUrl = '#pool?name=';
 			
 			$scope.models = {
@@ -16,7 +15,7 @@ module.controller('CreateController', [
 			};
 
 			// fetch current castaways
-			$http.get(fetchSeasonUrl).success(function(result) {
+			$http.get(appConfig.rest.fetchSeason).success(function(result) {
 				if (result.success) {
 					$scope.models.contestants = result.data.contestants;
 				}
@@ -39,7 +38,7 @@ module.controller('CreateController', [
 
 				console.log(JSON.stringify(params));
 
-				$http.post(createPoolUrl, params).success(function(result) {
+				$http.post(appConfig.rest.createPool, params).success(function(result) {
 					if (!result.success) {
 						$scope.errorMessage = result.errorMessage;
 					}

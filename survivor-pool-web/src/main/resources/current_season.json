@@ -1,105 +1,105 @@
 {
-  "name": "Millennials vs. Gen X",
+  "name": "Game Changers",
   "current": true,
   "contestants": [
     {
-      "name": "Adam",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_adamklein.jpg",
+      "name": "Andrea",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/e6d2eb4eb5d95142_surv34_cast_andreaboehlke.jpg",
       "status": "active"
     },
     {
-      "name": "Bret",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_bretlabelle.jpg",
+      "name": "Aubry",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/0b95d73be577fbef_surv34_cast_aubrybracco.jpg",
       "status": "active"
-    },
-    {
-      "name": "Chris",
-      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_chrishammons.jpg",
-      "status": "active"
-    },
-    {
-      "name": "CeCe",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_ciandretaylor.jpg",
-      "status": "active"
-    },
-    {
-      "name": "David",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_davidwright.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Hannah",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_hannahshapiro.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Figgy",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w270/cast/surv33_cast_jessicafigueroa.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Jessica",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_jessicalewis.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Jay",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_justinstarret.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Ken",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_kenmicnickle.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Lucy",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_lucyhuang.jpg",
-      "status": "active"
-    },
-    {
-      "name": "Mari",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_maritakahashi.jpg",
-      "status": "eliminated"
     },
     {
       "name": "Michaela",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_michaelabradshaw.jpg",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/51bbd0fe1f97ff2d_surv34_cast_michaelabradshaw.jpg",
       "status": "active"
     },
     {
-      "name": "Michelle",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_michelleshubert.jpg",
+      "name": "Brad",
+      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/w170-h215/cast/29edc775b97943ac_surv34_cast_bradculpepper.jpg",
       "status": "active"
     },
     {
-      "name": "Paul",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_paulwachter.jpg",
-      "status": "eliminated"
-    },
-    {
-      "name": "Rachel",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_rachelako.jpg",
-      "status": "eliminated"
-    },
-    {
-      "name": "Sunday",
-      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_sundayburquest.jpg",
+      "name": "Sandra",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/dfa572d47c9f9e8c_surv34_cast_sandradiaztwine.jpg",
       "status": "active"
     },
     {
-      "name": "Taylor",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_taylorstocker.jpg",
+      "name": "Ciera",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/f4ed3109e4e8e9ee_surv34_cast_cieraeastin.jpg",
       "status": "active"
     },
     {
-      "name": "Will",
-      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_willwahl.jpg",
+      "name": "Cirie",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/39a9586198d74f27_surv34_cast_ciriefields.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Hali",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/d0b525f1a042fdba_surv34_cast_haliford.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Malcolm",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/cce2a6386df56186_surv34_cast_malcolmfreberg.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Sarah",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/82008e013eb53b7e_surv34_cast_sarahlacina.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Ozzy",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/782a7bb3369065aa_surv34_cast_ozzylusth.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Caleb",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/7f56db5789380b85_surv34_cast_calebreynolds.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Troyzan",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/5aa735330e5e65b6_surv34_cast_troyrobertson.jpg",
       "status": "active"
     },
     {
       "name": "Zeke",
-      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/surv33_cast_zekesmith.jpg",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/b24c9eba482e2e00_surv34_cast_zekesmith.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Sierra",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/db1aed062e1fe3b5_surv34_cast_sierradawnthomas.jpg",
+      "status": "active"
+    },
+    {
+      "name": "JT",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/e92cc6920795e7fa_surv34_cast_jamesthomas.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Tai",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/5072087da2f0a8c9_surv34_cast_taitrang.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Jeff",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/b41ee8a15c717bb2_surv34_cast_jeffvarner.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Tony",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/520510d9980da36f_surv34_cast_tonyvlachos.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Debby",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/ebffc46661b14150_surv34_cast_debbiewanner.jpg",
       "status": "active"
     }
   ]

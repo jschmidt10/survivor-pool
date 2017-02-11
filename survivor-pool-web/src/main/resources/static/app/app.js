@@ -1,6 +1,7 @@
-var survivorApp = angular.module('survivor', [ 'survivor.find',
+var survivorApp = angular.module('survivor', [ 'survivor.config', 'survivor.find',
 		'survivor.pool', 'survivor.create', 'ngRoute' ]);
 
+// routes
 survivorApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/create', {
 		templateUrl : 'app/create/create.html',

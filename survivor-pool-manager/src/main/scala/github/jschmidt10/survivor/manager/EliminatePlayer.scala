@@ -14,7 +14,7 @@ object EliminatePlayer {
 
   private val SeasonTable = "survivorpool"
   private val PoolTable = "survivorpool"
-  private val EliminatedPlayer = "Michelle"
+  private val EliminatedPlayer = "Sunday"
 
   def main(args: Array[String]) {
 	  val poolRepo = new DynamoPoolRepository(PoolTable)
