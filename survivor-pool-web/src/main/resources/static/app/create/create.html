@@ -1,87 +1,98 @@
 <h2>Create a new pool</h2>
 
 <div class="form-horizontal create-pool-form">
-	<div class="form-group">
-		<label for="poolName" class="col-md-1">Name It</label>
-		<div class="col-md-5">
-			<input type="text" class="form-control" id="poolName"
-				ng-model="poolName" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="newPlayer" class="col-md-1">Add a friend</label>
-		<div class="col-md-4">
-			<input type="text" class="form-control" id="newPlayer"
-				ng-model="newPlayer" />
-		</div>
-		<div class="col-md-1">
-			<button class="btn btn-success"
-				ng-click="addPlayer(newPlayer); newPlayer = '';">Add</button>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-md-6 col-md-offset-1">
-			<button class="btn btn-primary" ng-click="createPool();">Create</button>
-		</div>
-		<div class="col-md-4" ng-show="errorMessage">
-			<span class="alert alert-danger error-text">{{errorMessage}}</span>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-md-6 col-md-offset-1">
-			Add some friends to your pool (don't forget yourself)! Then drag and 
-			drop the castaways to your friends. Hit 'Create' when you're all done.
-		</div>
-	</div>
+    <div class="form-group">
+        <label for="poolName" class="col-md-1">Pool Name</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" value="My new survivor pool" id="poolName"
+                   ng-model="poolName"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="newPlayer" class="col-md-1">Add a friend</label>
+        <div class="col-md-4">
+            <input type="text" class="form-control" value="Someone's name" id="newPlayer"
+                   ng-model="newPlayer"/>
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-success"
+                    ng-click="addPlayer(newPlayer); newPlayer = '';">Add
+            </button>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <button class="btn btn-primary" ng-click="createPool();">Create</button>
+        </div>
+        <div class="col-md-4" ng-show="errorMessage">
+            <span class="alert alert-danger error-text">{{errorMessage}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6 col-md-offset-1">
+            Add some friends to your pool (don't forget yourself)! Then drag and
+            drop the castaways to your friends. Hit 'Create' when you're all done.
+        </div>
+    </div>
 </div>
-<hr />
+<hr/>
 <div class="pool-panel row">
-	<div class="col-md-8">
-		<div class="row">
-			<div ng-repeat="player in models.players" class="col-md-6">
-				<div class="panel panel-info">
-					<div class="panel-heading">
-						<h3 class="panel-title">{{player.name}}</h3>
-					</div>
-					<div class="panel-body">
-						<ul dnd-list="player.contestants">
-							<li ng-repeat="castaway in player.contestants"
-								dnd-draggable="castaway"
-								dnd-moved="player.contestants.splice($index, 1)"
-								dnd-effect-allowed="move"
-								dnd-selected="models.selected = castaway"
-								class="contestant contestant-{{castaway.status}}"
-								ng-class="{'selected': models.selected === castaway}"><img
-								width="75" height="100" src="{{castaway.pic}}" />
-								{{castaway.name}}</li>
-						</ul>
-					</div>
-					<div class="panel-footer">
-						<span class="text-right"><button class="btn btn-danger"
-								ng-click="removePlayer(player.name);">Remove</button></span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Cast aways</h3>
-			</div>
-			<div class="panel-body">
-				<ul dnd-list="models.contestants">
-					<li ng-repeat="castaway in models.contestants"
-						dnd-draggable="castaway"
-						dnd-moved="models.contestants.splice($index, 1)"
-						dnd-effect-allowed="move"
-						dnd-selected="models.selected = castaway"
-						class="contestant contestant-{{castaway.status}}"
-						ng-class="{'selected': models.selected === castaway}"><img
-						width="75" height="100" src="{{castaway.pic}}" />
-						{{castaway.name}}</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="col-md-8 pre-scrollable">
+        <div class="row">
+            <div ng-repeat="player in models.players" class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="panel-title">{{player.name}}</h3>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" class="close" aria-label="Close"
+                                        ng-click="removePlayer(player.name);">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul dnd-list="player.contestants">
+                            <li ng-repeat="castaway in player.contestants"
+                                dnd-draggable="castaway"
+                                dnd-moved="player.contestants.splice($index, 1)"
+                                dnd-effect-allowed="move"
+                                dnd-selected="models.selected = castaway"
+                                class="contestant contestant-{{castaway.status}}"
+                                ng-class="{'selected': models.selected === castaway}"><img
+                                    width="75" height="100" src="{{castaway.pic}}"/>
+                                {{castaway.name}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 pre-scrollable">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Cast aways</h3>
+            </div>
+            <div class="panel-body">
+                <ul dnd-list="models.contestants">
+                    <li ng-repeat="castaway in models.contestants"
+                        dnd-draggable="castaway"
+                        dnd-moved="models.contestants.splice($index, 1)"
+                        dnd-effect-allowed="move"
+                        dnd-selected="models.selected = castaway"
+                        class="contestant contestant-{{castaway.status}}"
+                        ng-class="{'selected': models.selected === castaway}"><img
+                            width="75" height="100" src="{{castaway.pic}}"/>
+                        {{castaway.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

@@ -46,7 +46,7 @@ public class PoolValidation {
         Set<Contestant> distinct = contestants.stream().collect(Collectors.toSet());
 
         if (distinct.size() != contestants.size()) {
-            throw new RuleViolationException("Cannot assign the same castaway to multiple players");
+            throw new RuleViolationException("You cannot assign the same castaway to multiple players.");
         }
     }
 
@@ -59,7 +59,7 @@ public class PoolValidation {
      */
     public static void poolIsNamed(Pool pool, Season season) throws RuleViolationException {
         if (pool.getName() == null) {
-            throw new RuleViolationException("You must name your pool!");
+            throw new RuleViolationException("You must name your pool.");
         }
     }
 
@@ -78,7 +78,7 @@ public class PoolValidation {
                 .collect(Collectors.toList());
 
         if (!emptyPlayers.isEmpty()) {
-            throw new RuleViolationException("Cannot have players with no castaways");
+            throw new RuleViolationException("Every player must have at least one castaway.");
         }
     }
 
@@ -102,7 +102,7 @@ public class PoolValidation {
                 .anyMatch((c) -> !assignedContestants.contains(c));
 
         if (isUnassigned) {
-            throw new RuleViolationException("Must assign all castaways");
+            throw new RuleViolationException("All castaways must be assigned to a player.");
         }
     }
 
@@ -125,7 +125,7 @@ public class PoolValidation {
                 .anyMatch((c) -> !season.getContestants().contains(c));
 
         if (isUnknown) {
-            throw new RuleViolationException("Found an unknown castaway");
+            throw new RuleViolationException("We found an unknown castaway.");
         }
     }
 
