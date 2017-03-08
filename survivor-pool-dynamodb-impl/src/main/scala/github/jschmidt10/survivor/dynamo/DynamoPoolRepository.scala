@@ -14,9 +14,11 @@ import scala.util.Try
   */
 class DynamoPoolRepository(poolTable: String) extends PoolRepository with DynamoRepo {
 
+  private val mappings = Map("#n" -> "name", "#u" -> "url").asJava
+
   override def getAll(): JIterable[Pool] =
     dynamo
-      .scan(new ScanRequest(poolTable))
+      .scan(new ScanRequest(poolTable).withProjectionExpression("#n, #u").withExpressionAttributeNames(mappings))
       .getItems
       .asScala
       .flatMap(item => Try(PoolSerializer.fromItem(item)).toOption)
