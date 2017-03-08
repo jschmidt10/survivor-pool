@@ -26,8 +26,11 @@ public class CreatePool implements LambdaLogging {
         LambdaLogger logger = context.getLogger();
 
         try {
-            boolean result = execute(pool);
-            return result ? RestResponse.success("Pool created.") : RestResponse.failure("Could not execute pool.");
+            if (execute(pool)) {
+                return RestResponse.success(pool);
+            } else {
+                return RestResponse.failure("Could not execute pool.");
+            }
         } catch (Exception e) {
             logException(logger, e);
             return RestResponse.failure(e.getMessage());
