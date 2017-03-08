@@ -8,11 +8,7 @@ module.controller('PoolController', [
 		function($scope, $http, $routeParams, appConfig) {
 			var poolName = $routeParams.name;
 
-			$http.post(appConfig.rest.getPools, {
-				params : {
-					name : poolName
-				}
-			}).success(
+			$http.post(appConfig.rest.getPools, { name : poolName }).success(
 					function(results) {
 						if (results.success && results.data.length == 1) {
 							$scope.pool = results.data[0];
