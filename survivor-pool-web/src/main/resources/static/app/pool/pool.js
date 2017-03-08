@@ -8,7 +8,7 @@ module.controller('PoolController', [
 		function($scope, $http, $routeParams, appConfig) {
 			var poolName = $routeParams.name;
 
-			$http.get(appConfig.rest.getPools, {
+			$http.post(appConfig.rest.getPools, {
 				params : {
 					name : poolName
 				}

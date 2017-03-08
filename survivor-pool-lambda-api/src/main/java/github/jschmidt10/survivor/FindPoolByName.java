@@ -2,6 +2,8 @@ package github.jschmidt10.survivor;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.LambdaLogger;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.dynamo.DynamoPoolRepository;
 
