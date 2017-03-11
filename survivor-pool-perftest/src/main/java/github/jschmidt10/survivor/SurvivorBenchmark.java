@@ -38,11 +38,17 @@ import github.jschmidt10.survivor.api.Contestant;
 import github.jschmidt10.survivor.api.Player;
 import github.jschmidt10.survivor.api.Pool;
 import github.jschmidt10.survivor.dynamo.PoolSerializer;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.openjdk.jmh.Main;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.State;
 
+import java.io.IOException;
 import java.util.*;
 
 @State(Scope.Thread)
@@ -79,9 +85,25 @@ public class SurvivorBenchmark {
         }
     }
 
+//    @Benchmark
+//    public Pool testPoolSerialization() {
+//        return PoolSerializer.fromItem(item);
+//    }
+
     @Benchmark
-    public Pool testPoolSerialization() {
-        return PoolSerializer.fromItem(item);
+    public String testLambdaCalls() {
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
+            HttpPost post = new HttpPost("https://inzpqeqt93.execute-api.us-east-1.amazonaws.com/prod/FindPoolByName");
+            post.setHeader("Content-Type", "application/json");
+            post.setEntity(new StringEntity("{\"name\":\"Thursday Survivor\"}"));
+
+            try (CloseableHttpResponse response = client.execute(post)) {
+                return response.getEntity().toString();
+            }
+        } catch (IOException e) {
+            System.err.println("Could not make HTTP call");
+        }
+        return "";
     }
 
     public static void main(String[] args) throws Exception {
