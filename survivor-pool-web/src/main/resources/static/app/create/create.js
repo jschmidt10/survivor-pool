@@ -36,8 +36,6 @@ module.controller('CreateController', [
 					players : $scope.models.players
 				};
 
-				console.log(JSON.stringify(params));
-
 				$http.post(appConfig.rest.createPool, params).success(function(result) {
 					if (!result.success) {
 						$scope.errorMessage = result.errorMessage;

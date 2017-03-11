@@ -18,7 +18,8 @@ class DynamoPoolRepository(poolTable: String) extends PoolRepository with Dynamo
 
   override def getAll(): JIterable[Pool] =
     dynamo
-      .scan(new ScanRequest(poolTable).withProjectionExpression("#n, #u").withExpressionAttributeNames(mappings))
+      //      .scan(new ScanRequest(poolTable).withProjectionExpression("#n, #u").withExpressionAttributeNames(mappings))
+      .scan(new ScanRequest(poolTable))
       .getItems
       .asScala
       .flatMap(item => Try(PoolSerializer.fromItem(item)).toOption)
