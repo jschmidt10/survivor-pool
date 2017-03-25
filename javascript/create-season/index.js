@@ -1,6 +1,6 @@
 const service = require("./service");
 
-// production lambda config
+// production config
 const table = "survivorpoolv2";
 const env = "prod";
 

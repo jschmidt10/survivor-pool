@@ -11,12 +11,12 @@ exports.handler = function(event, context, callback) {
     var data = null;
 
     if (err) {
-      console.log("Error fetching season.");
+      console.log("Error listing pools.");
       console.log(JSON.stringify(err));
       errorMessage = err.message;
     }
     else {
-      console.log("Fetched season.");
+      console.log("Pools listed successfully.");
       success = true;
     }
 
