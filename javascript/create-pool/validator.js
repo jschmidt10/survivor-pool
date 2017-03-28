@@ -7,6 +7,8 @@ const assert = require("assert");
 //    season - the current season
 //    pool - the pool to validate.
 exports.validate = function(season, pool, callback) {
+  console.log("Season ");
+  console.log(JSON.stringify(season, null, 2));
   try {
     poolIsNamed(pool);
     noUnassignedContestants(pool, season);
@@ -21,7 +23,7 @@ exports.validate = function(season, pool, callback) {
 };
 
 function poolIsNamed(pool) {
-  assert(pool.name.length > 0, "Pool must be named.");
+  assert(pool.name && pool.name.length > 0, "Pool must be named.");
 }
 
 function noUnassignedContestants(pool, season) {

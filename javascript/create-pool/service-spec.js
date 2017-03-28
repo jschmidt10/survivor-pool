@@ -1,6 +1,6 @@
-const service = require("./service");
 const async = require("async");
 const AWS = require("aws-sdk");
+const service = require("./service");
 
 AWS.config.update({region: 'us-east-1'});
 

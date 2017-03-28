@@ -54,7 +54,7 @@ exports.execute = function(table, env, seasonService, poolName, callback) {
           var seasonContestant = season.contestants.find(function(sc) { return sc.name == pc.name; });
 
           if (!seasonContestant) {
-            next(Error("Contestant " + c + " not in the current season."), null);
+            next(Error("Contestant " + pc + " not in the current season."), null);
           }
 
           pc.pic = seasonContestant.pic;

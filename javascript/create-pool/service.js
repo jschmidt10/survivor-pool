@@ -3,7 +3,6 @@
 const AWS = require("aws-sdk");
 const async = require("async");
 const validator = require("./validator");
-const getPool = require("../get-pool");
 
 AWS.config.update({region: "us-east-1"});
 
@@ -45,12 +44,23 @@ function runValidations(pool) {
 
 function insertPool(table, env) {
   return function(validPool, next) {
-    validPool.id = "POOL:" + validPool.name;
-    validPool.env = env;
+    var poolToInsert = {};
+
+    poolToInsert.id = "POOL:" + validPool.name;
+    poolToInsert.name = validPool.name;
+    poolToInsert.env = env;
+    poolToInsert.players = validPool.players.map(function (p) {
+      var player = {};
+      player.name = p.name;
+      player.contestants = p.contestants.map(function (c) {
+        return { name: c.name };
+      });
+      return player;
+    });
 
     var putRequest = {
       TableName: table,
-      Item: validPool
+      Item: poolToInsert
     };
 
     dynamo.put(putRequest, next);
@@ -63,7 +73,7 @@ function insertPoolListEntry(table, env, pool) {
       id: "POOL_LIST:" + env,
       env: pool.name,
       name: pool.name,
-      url: pool.url
+      url: encodeURIComponent(pool.name)
     };
 
     var putRequest = {

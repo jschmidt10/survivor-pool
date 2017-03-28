@@ -8,7 +8,6 @@ exports.handler = function(event, context, callback) {
   service.execute(table, env, function(err, data) {
     var success = false;
     var errorMessage = "";
-    var data = null;
 
     if (err) {
       console.log("Error fetching season.");

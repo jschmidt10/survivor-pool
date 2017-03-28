@@ -65,7 +65,7 @@ describe("List Pools Service", function() {
       }
     ], function(err, pools) {
       expect(err).toBe(null);
-      expect(pools.length).toBe(2);
+      expect(pools.length >= 2).toBe(true);
       expect(pools).toContain(pool1);
       expect(pools).toContain(pool2);
       done();

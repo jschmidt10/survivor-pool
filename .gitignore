@@ -1,0 +1,9 @@
+**/node_modules
+**/*.iml
+**/target
+**/*.zip
+**/.classpath
+**/.project
+**/.settings
+**/.cache-main
+**/.idea
