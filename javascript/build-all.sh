@@ -5,13 +5,13 @@
 # Current modules: create-pool, fetch-season, get-pool, list-pools
 #
 BASEDIR=`dirname "$0"`
-MODULES=(create-pool fetch-season get-pool list-pools)
+MODULES=( create-pool fetch-season get-pool list-pools )
 
 cd ${BASEDIR}
 
-for MODULE in ${MODULES};
+for MODULE in "${MODULES[@]}";
 do
-  pushd ${MODULE}
+  pushd ${MODULE} >> /dev/null
   echo "Building ${MODULE}"
 
   echo "Running 'npm test'"
@@ -32,5 +32,5 @@ do
     zip "${MODULE}.zip" *
   fi
 
-  popd
+  popd >> /dev/null
 done
