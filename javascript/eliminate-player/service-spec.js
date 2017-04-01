@@ -8,65 +8,59 @@ const env = "test";
 const table = "survivorpoolv2";
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
+var season = {
+  id: "SEASON",
+  env: env,
+  name: "Test Eliminate Player",
+  contestants: [
+    { name: "Leroy", pic: "leroy.gif", status: "active" },
+    { name: "Bert", pic: "bert.gif", status: "active" },
+    { name: "Carla", pic: "carla.jpg", status: "active" }
+  ]
+};
+
+var putRequest = {
+  TableName: table,
+  Item: season
+};
+
 var getRequest = {
   TableName: table,
   Key: {
-    id: "SEASON",
+    id: season.id,
     env: env
   }
 };
 
-describe("Create Season Service", function() {
+describe("Eliminate Player Service", function() {
 
-  it("errors when missing name", function(done) {
-    var season = newSeason();
-    season.name = null;
-    service.execute(table, env, season, function(err, data) {
-      expect(err).not.toBe(null);
-      expect(data).toBe(null);
-      done();
-    });
-  });
-
-  it("errors when zero contestants", function(done) {
-    var season = newSeason();
-    season.contestants = [];
-    service.execute(table, env, season, function(err, data) {
-      expect(err).not.toBe(null);
-      expect(data).toBe(null);
-      done();
-    });
-  });
-
-  it("inserts when all fields present", function(done) {
-    var season = newSeason();
-    async.waterfall([
-      function executeService(next) {
-        service.execute(table, env, season, next);
+  it("should eliminate a player", function(done) {
+    async.waterfall(
+    [
+      function createTestSeason(next) {
+        dynamo.put(putRequest, next);
       },
-      function fetchSeason(data, next) {
+      function eliminatePlayer(res, next) {
+        service.execute(table, env, "Leroy", next);
+      },
+      function fetchResult(res, next) {
         dynamo.get(getRequest, next);
-      },
-      function parseResult(data, next) {
-        next(null, data.Item);
       }
-    ], function(err, fetchedSeason) {
-      expect(err).toBe(null);
-      expect(fetchedSeason.name).toBe(season.name);
-      expect(fetchedSeason.contestants.length).toBe(season.contestants.length);
+    ],
+    function(err, res) {
+      expect(err).toBeNull();
+
+      var season = res.Item;
+
+      var leroy = season.contestants.find(function(c) { return c.name == "Leroy"; });
+      var bert = season.contestants.find(function(c) { return c.name == "Bert"; });
+      var carla = season.contestants.find(function(c) { return c.name == "Carla"; });
+
+      expect(leroy.status).toBe("eliminated");
+      expect(bert.status).toBe("active");
+      expect(carla.status).toBe("active");
       done();
     });
   });
 
 });
-
-function newSeason() {
-  return {
-           name: "Test Create Season",
-           contestants: [
-             { name: "Leroy", pic: "leroy.gif", status: "Active" },
-             { name: "Bert", pic: "bert.gif", status: "Active" },
-             { name: "Carla", pic: "carla.jpg", status: "Eliminated" }
-           ]
-         };
-}

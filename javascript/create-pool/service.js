@@ -8,19 +8,22 @@ AWS.config.update({region: "us-east-1"});
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-// Creates a new pool.
-//   - table         The dynamo table to use.
-//   - env           The current runtime environment.
-//   - seasonService A service which provides the current season.
-//   - pool          The pool to create.
-//   - callback      The callback to receive results or error information.
+/**
+ * Creates a new Survivor pool.
+ * @param table             DynamoDB table
+ * @param env               Runtime environment
+ * @param seasonService     A service for fetching the current season
+ * @param pool              Pool to create
+ * @param callback          Callback for errors/results
+ */
 exports.execute = function(table, env, seasonService, pool, callback) {
   async.waterfall([
     getSeason(seasonService),
     runValidations(pool),
     insertPool(table, env),
     insertPoolListEntry(table, env, pool)
-  ], function(err, result) {
+  ],
+  function(err, result) {
     if (err) {
       callback(err, null);
     }
@@ -30,18 +33,27 @@ exports.execute = function(table, env, seasonService, pool, callback) {
   });
 };
 
+/**
+ * Fetches the current season using the passed in service.
+ */
 function getSeason(seasonService) {
   return function(next) {
     seasonService.execute(next);
   };
 }
 
+/**
+ * Validates the season/pool.
+ */
 function runValidations(pool) {
   return function(result, next) {
     validator.validate(result, pool, next);
   };
 }
 
+/**
+ * Inserts the pool to the DynamoDB.
+ */
 function insertPool(table, env) {
   return function(validPool, next) {
     var poolToInsert = {};
@@ -49,6 +61,8 @@ function insertPool(table, env) {
     poolToInsert.id = "POOL:" + validPool.name;
     poolToInsert.name = validPool.name;
     poolToInsert.env = env;
+
+    // Masks out the fields we don't need
     poolToInsert.players = validPool.players.map(function (p) {
       var player = {};
       player.name = p.name;
@@ -67,6 +81,9 @@ function insertPool(table, env) {
   };
 }
 
+/**
+ * Inserta a pool list entry for this pool.
+ */
 function insertPoolListEntry(table, env, pool) {
   return function(result, next) {
     var record = {

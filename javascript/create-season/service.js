@@ -8,11 +8,13 @@ AWS.config.update({region: "us-east-1"});
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const seasonId = "SEASON";
 
-// Adds the given season to DynamoDB.
-//   - table    The dynamo table to use.
-//   - env      The current runtime environment.
-//   - season   The season to create.
-//   - callback The callback to receive results or error information.
+/**
+ * Creates a new survivor season.
+ * @param table     DynamoDB table
+ * @param env       Runtime environment
+ * @param season    Season to create
+ * @param callback  Callback to receive errors/results
+ */
 exports.execute = function(table, env, season, callback) {
 
   try {
@@ -34,12 +36,18 @@ exports.execute = function(table, env, season, callback) {
   dynamo.put(putRequest, callback);
 };
 
+/**
+ * Validates a season. Seasons must be named and have valid contestants.
+ */
 function validateSeason(season) {
   assert(season.name, "Must define a season name.");
   assert(season.contestants.length > 0, "Must have at least one contestant.");
   season.contestants.forEach(validateContestant);
 }
 
+/**
+ * Validates a contestant has all the fields necessary.
+ */
 function validateContestant(c) {
   assert(c.name, "Contestants must have a name.");
   assert(c.pic, "Contestants must have a pic.");

@@ -7,10 +7,13 @@ AWS.config.update({region: "us-east-1"});
 const dynamo = new AWS.DynamoDB.DocumentClient();
 const seasonId = "SEASON";
 
-// Fetches the current season of survivor.
-//   - table    The dynamo table to use.
-//   - env      The current runtime environment.
-//   - callback The callback to receive results or error information.
+/**
+ * Fetches the current season of survivor.
+ *
+ * @param table     DynamoDB table
+ * @param env       Runtime environment
+ * @param callback  Callback that will receive the errors/results
+ */
 exports.execute = function(table, env, callback) {
   var params = {
     Key: {

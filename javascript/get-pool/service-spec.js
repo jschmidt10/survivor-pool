@@ -48,29 +48,19 @@ seasonService.execute = function(callback) {
 describe("Get Pool Service", function() {
 
   it("should fetch a pool", function(done) {
-    async.waterfall([
-
+    async.waterfall(
+    [
       function writeSeason(next) {
-        var writeSeason = {
-          TableName: table,
-          Item: season
-        };
-        dynamo.put(writeSeason, next);
+        dynamo.put({ TableName: table, Item: season }, next);
       },
-
       function writePool(res, next) {
-        var writePool = {
-          TableName: table,
-          Item: pool
-        };
-        dynamo.put(writePool, next);
+        dynamo.put({ TableName: table, Item: pool }, next);
       },
-
-      function executeService(res, next) {
+      function getPool(res, next) {
         service.execute(table, env, seasonService, pool.name, next);
       }
-
-    ], function(err, fetchedPool) {
+    ],
+    function(err, fetchedPool) {
       expect(err).toBeNull();
       expect(fetchedPool).not.toBeNull();
       expect(fetchedPool.name).toBe(pool.name);
@@ -81,6 +71,13 @@ describe("Get Pool Service", function() {
 
       expect(c1.pic).toBe("c1.jpg");
       expect(c1.status).toBe("active");
+      done();
+    });
+  });
+
+  it("should fail if no pool name given", function(done) {
+    service.execute(table, env, seasonService, null, function(err, pool) {
+      expect(err.message).toBe(service.ERR_NO_POOL_NAME_GIVEN.message);
       done();
     });
   });

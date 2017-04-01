@@ -1,6 +1,6 @@
 const async = require("async");
 const AWS = require("aws-sdk");
-const service = require("./service");
+const service = require("../service");
 
 AWS.config.update({region: 'us-east-1'});
 
@@ -27,7 +27,7 @@ seasonService.execute = function(callback) {
 
 var pool = {
   name: "My Pool",
-  url: "http://mypool.com",
+  url: "My%20Pool",
   players: [
     {
       name: "Tommy",
@@ -77,10 +77,10 @@ describe("Create Pool Service", function() {
       function getItem(data, next) {
         next(null, data.Item);
       }
-    ], function(err, fetchedPool) {
+    ],
+    function(err, fetchedPool) {
       expect(err).toBe(null);
       expect(fetchedPool.name).toBe(pool.name);
-      expect(fetchedPool.url).toBe(pool.url);
       expect(fetchedPool.players.size).toBe(pool.players.size);
       done();
     });
@@ -97,7 +97,8 @@ describe("Create Pool Service", function() {
       function getItem(data, next) {
         next(null, data.Item);
       }
-    ], function(err, poolListEntry) {
+    ],
+    function(err, poolListEntry) {
       expect(err).toBe(null);
       expect(poolListEntry.name).toBe(pool.name);
       expect(poolListEntry.url).toBe(pool.url);

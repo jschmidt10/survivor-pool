@@ -1,5 +1,5 @@
 const async = require("async");
-const validator = require("./validator");
+const validator = require("../validator");
 
 var season = {
   name: "Season 1",
@@ -19,7 +19,7 @@ describe("Validator", function() {
     var pool = newTestPool();
     pool.name = "";
     validator.validate(season, pool, function(err, data) {
-      expect(err.message).toBe("Pool must be named.");
+      expect(err.message).toBe(validator.ERR_NOT_NAMED);
       done();
     });
   });

@@ -46,24 +46,20 @@ var putRequest = {
 describe("Fetch Season Service", function() {
 
   it("returns the current season", function(done) {
-    async.waterfall([
+    async.waterfall(
+    [
       function putItem(next) {
         dynamo.put(putRequest, next);
       },
-      function testService(result, next) {
+      function fetchSeason(result, next) {
         service.execute(table, env, next);
       }
     ],
     function (err, season) {
-       if(err) {
-         throw (err);
-       }
-       else {
-         expect(err).toBe(null);
-         expect(season.name).toBe(expectedSeason.name);
-         expect(season.contestants.length).toBe(3);
-         done();
-       }
+       expect(err).toBe(null);
+       expect(season.name).toBe(expectedSeason.name);
+       expect(season.contestants.length).toBe(3);
+       done();
     });
   });
 });

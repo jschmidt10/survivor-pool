@@ -7,20 +7,19 @@ AWS.config.update({region: "us-east-1"});
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
 
-// Lists all current survivor pools.
-//   - table    The dynamo table to use.
-//   - env      The current runtime environment.
-//   - callback The callback to receive results or error information.
+/**
+ * Lists all survivor pools.
+ *
+ * @param table     DynamoDB table
+ * @param env       Runtime environment
+ * @param callback  The callback that will receive errors/results.
+ */
 exports.execute = function(table, env, callback) {
-
-  var listId = "POOL_LIST:" + env;
 
   var request = {
     TableName: table,
     KeyConditionExpression: "id = :id",
-    ExpressionAttributeValues: {
-      ":id": listId
-    }
+    ExpressionAttributeValues: { ":id": "POOL_LIST:" + env }
   };
 
   dynamo.query(request, function(err, data) {
@@ -33,6 +32,9 @@ exports.execute = function(table, env, callback) {
   });
 };
 
+/**
+ * Ensures that we only return the fields we need.
+ */
 function simplifyPool(item) {
   return { name: item.name, url: item.url };
 }

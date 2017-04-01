@@ -1,6 +1,9 @@
 // A season-service backed by a Lambda endpoint.
 const request = require("request");
 
+/**
+ * A service that fetches seasons over REST.
+ */
 var RestSeasonService = class {
   constructor(url) {
     if (!url) {

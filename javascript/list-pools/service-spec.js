@@ -50,7 +50,8 @@ var write3 = {
 describe("List Pools Service", function() {
 
   it("should fetch all pools", function(done) {
-    async.waterfall([
+    async.waterfall(
+    [
       function insert1(next) {
         dynamo.put(write1, next);
       },
@@ -63,7 +64,8 @@ describe("List Pools Service", function() {
       function listPools(res, next) {
         service.execute(table, env, next);
       }
-    ], function(err, pools) {
+    ],
+    function(err, pools) {
       expect(err).toBe(null);
       expect(pools.length >= 2).toBe(true);
       expect(pools).toContain(pool1);
