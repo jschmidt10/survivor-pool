@@ -5,7 +5,15 @@
 # Current modules: create-pool, fetch-season, get-pool, list-pools
 #
 BASEDIR=`dirname "$0"`
-MODULES=( create-pool fetch-season get-pool list-pools )
+
+if [[ $# -gt 0 ]];
+then
+  echo "Building modules ${@:1}"
+  MODULES=${@:1}
+else
+  echo "Building all modules"
+  MODULES=( create-pool fetch-season get-pool list-pools )
+fi
 
 cd ${BASEDIR}
 
@@ -29,7 +37,7 @@ do
       rm -f "${MODULE}.zip"
     fi
 
-    zip "${MODULE}.zip" *
+    zip -r "${MODULE}.zip" *
   fi
 
   popd >> /dev/null

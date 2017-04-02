@@ -18,7 +18,6 @@ const seasonId = "SEASON";
 exports.execute = function(table, env, player, callback) {
   async.waterfall(
   [
-    validateParams(table, env, player),
     getSeason(table, env),
     eliminatePlayer(player),
     saveSeason(table)

@@ -23,14 +23,7 @@ exports.execute = function(table, env, seasonService, pool, callback) {
     insertPool(table, env),
     insertPoolListEntry(table, env, pool)
   ],
-  function(err, result) {
-    if (err) {
-      callback(err, null);
-    }
-    else {
-      callback(null, pool);
-    }
-  });
+  callback);
 };
 
 /**
@@ -98,6 +91,13 @@ function insertPoolListEntry(table, env, pool) {
       Item: record
     };
 
-    dynamo.put(putRequest, next);
+    dynamo.put(putRequest, function(err, result) {
+      if (err) {
+        next(err, null);
+      }
+      else {
+        next(null, record);
+      }
+    });
   };
 }

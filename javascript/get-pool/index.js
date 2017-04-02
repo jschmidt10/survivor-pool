@@ -1,4 +1,3 @@
-const request = require("request");
 const service = require("./service");
 const seasonServiceFactory = require("./season-service");
 
