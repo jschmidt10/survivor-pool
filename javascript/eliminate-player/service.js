@@ -31,7 +31,7 @@ exports.execute = function(table, env, player, callback) {
  * @param env       Runtime environment
  */
 function getSeason(table, env) {
-  return function(result, next) {
+  return function(next) {
     var getRequest = {
       TableName: table,
       Key: {
