@@ -1,0 +1,16 @@
+{
+  "name": "survivorpool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.65.0",
+    "flatmap": "0.0.3",
+    "jasmine-node": "^1.14.5"
+  }
+}
