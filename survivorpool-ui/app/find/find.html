@@ -1,0 +1,21 @@
+<p>Here's the current list of Survivor pools. Find yours by searching for the name.</p>
+
+<p>Once you find it, don't forget to bookmark it so you can straight there next time!</p>
+
+<table class="table">
+
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>URL</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="p in pools">
+			<td>{{p.name}}</td>
+			<td><a href="#pool?name={{p.url}}">View</a></td>
+		</tr>
+	</tbody>
+
+</table>

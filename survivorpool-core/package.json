@@ -1,0 +1,15 @@
+{
+  "name": "survivorpool-core",
+  "version": "1.0.0",
+  "description": "survivorpool core functionality",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/jschmidt10/survivor-pool/"
+  },
+  "author": "jschmidt10",
+  "license": "ISC"
+}
