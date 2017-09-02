@@ -14,7 +14,7 @@ module.exports = class GetPoolHandler extends AwsRequestHandler {
 
   invokeService(path, body, callback) {
     let pathParts = path.split("/");
-    let poolName = pathParts[pathParts.length - 1];
+    let poolName = decodeURIComponent(pathParts[pathParts.length - 1]);
 
     this
       .service
