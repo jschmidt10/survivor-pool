@@ -1,11 +1,11 @@
 "use strict";
 
-const AWSConfig = require("../app/aws-config");
-const GetSeasonService = require("../app/get-season-service");
-const DynamoFactory = require("../app/aws-dynamo-factory");
+const AWSConfig = require("survivorpool-core/aws-config");
+const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
+const GetSeasonService = require("../get-season-service");
 
 let dynamo = DynamoFactory.newInstance();
-let testConfig = new AWSConfig("survivorpoolv2", "test");
+let testConfig = new AWSConfig("survivorpool", "test");
 
 describe("GetSeasonService", function() {
 

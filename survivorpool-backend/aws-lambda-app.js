@@ -17,12 +17,12 @@ module.exports = class AWSLambdaApp {
    */
   process(event, context, callback) {
     var handler = undefined;
-    let handlers = this.handlers.filter((h) => h.acceptsPath(event));
-    if (handlers.length === 0) {
+    let matchedHandlers = this.handlers.filter((h) => h.acceptsPath(event));
+    if (matchedHandlers.length === 0) {
       handler = this.notFoundHandler;
     }
     else {
-      handler = handlers.find((h) => h.acceptsMethod(event));
+      handler = matchedHandlers.find((h) => h.acceptsMethod(event));
       if (handler == undefined) {
         handler = this.methodNotAllowedHandler;
       }

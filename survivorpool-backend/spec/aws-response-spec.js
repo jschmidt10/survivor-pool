@@ -1,6 +1,6 @@
 "use strict";
 
-const AWSResponse = require("../app/aws-response");
+const AWSResponse = require("../aws-response");
 
 describe("aws-request", function() {
   it("should create a response from a status and body", function(done) {

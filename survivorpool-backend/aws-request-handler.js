@@ -33,6 +33,6 @@ module.exports = class AWSRequestHandler {
     if (event.httpMethod == "POST" && event.body) {
       body = JSON.parse(event.body);
     }
-    this.serviceCaller(path, body, callback);
+    this.invokeService(path, body, callback);
   }
 };

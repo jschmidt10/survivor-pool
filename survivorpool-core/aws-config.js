@@ -1,6 +1,6 @@
 "use strict";
 
-const defaultTable = "survivorpoolv2";
+const defaultTable = "survivorpool";
 const defaultEnv = "prod";
 
 /*

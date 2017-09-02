@@ -1,11 +1,11 @@
 "use strict";
 
-const AWSConfig = require("../app/aws-config");
-const CreatePoolService = require("../app/create-pool-service");
-const DynamoFactory = require("../app/aws-dynamo-factory");
+const AWSConfig = require("survivorpool-core/aws-config");
+const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
+const CreatePoolService = require("../create-pool-service");
 
 let dynamo = DynamoFactory.newInstance();
-let testConfig = new AWSConfig("survivorpoolv2", "test");
+let testConfig = new AWSConfig("survivorpool", "test");
 
 describe("CreatePoolService", function() {
 

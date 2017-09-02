@@ -8,7 +8,7 @@ module.controller('PoolController', [
 		function($scope, $http, $routeParams, appConfig) {
 			var poolName = $routeParams.name;
 
-			$http.get(appConfig.rest.getPool, { name : poolName }).success(
+			$http.get(appConfig.rest.getPool + "/" + poolName).success(
 					function(results) {
 						$scope.pool = results;
 						$scope.maxContestantsPerPlayer = results.players

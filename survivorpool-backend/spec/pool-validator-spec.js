@@ -1,4 +1,4 @@
-const PoolValidation = require("../app/pool-validation");
+const PoolValidation = require("../pool-validation");
 
 const validator = new PoolValidation.PoolValidator();
 

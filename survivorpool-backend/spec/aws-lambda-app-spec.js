@@ -1,10 +1,20 @@
 "use strict";
 
-const AWSResponse = require("../app/aws-response");
-const AWSRequestHandler = require("../app/aws-request-handler");
-const AWSLambdaApp = require("../app/aws-lambda-app");
+const AWSResponse = require("../aws-response");
+const AWSRequestHandler = require("../aws-request-handler");
+const AWSLambdaApp = require("../aws-lambda-app");
 
-let handler = new AWSRequestHandler(/^test$/, "GET", serviceCaller);
+class TestRequestHandler extends AWSRequestHandler {
+  constructor() {
+    super(/^test$/, "GET");
+  }
+
+  handle(event, callback) {
+    callback(null, AWSResponse(200, "Ok"));
+  }
+};
+
+let handler = new TestRequestHandler();
 let app = new AWSLambdaApp([ handler ]);
 
 describe("aws-lambda-app", function() {
@@ -29,10 +39,6 @@ describe("aws-lambda-app", function() {
     });
   });
 });
-
-function serviceCaller(path, body, callback) {
-  callback(null, AWSResponse(200, "Ok"));
-}
 
 function stubEvent(path, method) {
   return {

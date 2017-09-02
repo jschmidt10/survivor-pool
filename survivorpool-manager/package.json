@@ -1,0 +1,15 @@
+{
+  "name": "survivorpool-manager",
+  "version": "1.0.0",
+  "description": "manager apps for administering survivorpool",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test spec/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/jschmidt10/survivor-pool"
+  },
+  "author": "jschmidt10",
+  "license": "ISC"
+}
