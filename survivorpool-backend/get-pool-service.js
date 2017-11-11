@@ -1,14 +1,14 @@
 "use strict";
 
 const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
-const GetSeasonService = require("./get-season-service");
+const SeasonService = require("survivorpool-core/season-service");
 
 const NoPoolNameGivenError = Error("Requires parameter 'poolName'.");
 const PoolNotFoundError = Error("Could not find pool with the given name.");
 
 module.exports = class GetPoolService {
 
-  constructor(seasonService = new GetSeasonService()) {
+  constructor(seasonService = new SeasonService()) {
     this.seasonService = seasonService;
     this.dynamo = DynamoFactory.newInstance();
   }
@@ -21,7 +21,7 @@ module.exports = class GetPoolService {
 
     return new Promise((resolve, reject) => {
       validateParams(poolName)
-        .then((res) => this.seasonService.execute(config))
+        .then((res) => this.seasonService.get(config))
         .then((fetchedSeason) => {
           season = fetchedSeason;
           let request = fetchPoolRequest(config, poolName);

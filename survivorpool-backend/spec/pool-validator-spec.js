@@ -1,6 +1,7 @@
-const PoolValidation = require("../pool-validation");
+const PoolValidator = require("../pool-validator");
+const PoolValidatorErrors = require("../pool-validator-errors");
 
-const validator = new PoolValidation.PoolValidator();
+const validator = new PoolValidator();
 
 var season = {
   name: "Season 1",
@@ -39,7 +40,7 @@ describe("Validator", function() {
         done();
       })
       .catch((err) => {
-        expect(err.message).toBe(PoolValidation.ERR_NOT_NAMED);
+        expect(err.message).toBe(PoolValidatorErrors.NOT_NAMED);
         done();
       });
   });

@@ -1,15 +1,15 @@
 "use strict";
 
 const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
-const GetSeasonService = require("./get-season-service");
-const PoolValidation = require("./pool-validation");
+const SeasonService = require("survivorpool-core/season-service");
+const PoolValidator = require("./pool-validator");
 
 module.exports = class CreatePoolService {
 
-  constructor(seasonService = new GetSeasonService()) {
+  constructor(seasonService = new SeasonService()) {
     this.seasonService = seasonService;
     this.dynamo = DynamoFactory.newInstance();
-    this.validator = new PoolValidation.PoolValidator();
+    this.validator = new PoolValidator();
   }
 
   /*
@@ -19,7 +19,7 @@ module.exports = class CreatePoolService {
     return new Promise((resolve, reject) => {
       this
         .seasonService
-        .execute(config)
+        .get(config)
         .then((season) => this.validator.validate(pool, season))
         .then((validPool) => insertPoolRecord(this.dynamo, config, pool))
         .then((res) => insertPoolListRecord(this.dynamo, config, pool))

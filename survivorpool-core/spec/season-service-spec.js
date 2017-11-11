@@ -1,13 +1,13 @@
 "use strict";
 
-const AWSConfig = require("survivorpool-core/aws-config");
-const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
-const SeasonService = require("survivorpool-core/season-service");
+const AWSConfig = require("../aws-config");
+const DynamoFactory = require("../aws-dynamo-factory");
+const SeasonService = require("../season-service");
 
 let dynamo = DynamoFactory.newInstance();
 let testConfig = new AWSConfig("survivorpool", "test");
 
-describe("GetSeasonService", function() {
+describe("SeasonService", function() {
 
   let service = new SeasonService();
   let expectedSeason = {
@@ -19,7 +19,7 @@ describe("GetSeasonService", function() {
     ]
   };
 
-  it("should return the current season", function(done) {
+  it("should get the current season", function(done) {
     dynamo
       .put(testDataPutRequest(testConfig))
       .promise()
