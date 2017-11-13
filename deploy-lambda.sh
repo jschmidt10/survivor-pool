@@ -2,12 +2,12 @@
 #
 # Packages and deploys survivorpool-backend to AWS.
 
-cd survivorpool-backend/
+cd backend/
 npm test
 
 if [[ $? -ne 0 ]]
 then
-  echo "There were test failures in survivorpool-backend"
+  echo "There were test failures in backend"
   exit 1
 fi
 
@@ -15,7 +15,7 @@ zip -r survivorpool-backend.zip *
 
 if [[ $? -ne 0 ]]
 then
-  echo "An error occurred while zipping survivorpool-backend"
+  echo "An error occurred while zipping backend"
   exit 1
 fi
 

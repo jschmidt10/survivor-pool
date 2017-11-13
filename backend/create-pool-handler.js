@@ -5,8 +5,6 @@ const CreatePoolService = require("./create-pool-service");
 const AwsRequestHandler = require("./aws-request-handler");
 const AWSResponse = require("./aws-response");
 
-
-
 module.exports = class CreatePoolHandler extends AwsRequestHandler {
   constructor(config = new AwsConfig()) {
     super(/pool$/, "POST");

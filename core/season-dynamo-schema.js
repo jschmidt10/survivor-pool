@@ -32,8 +32,7 @@ module.exports.putRequest = function(config, season) {
 /*
  * Extracts the season from the DynamoDB result.
  */
-module.exports.fromDynamo = function(result) {
-  var season = result.Item;
+module.exports.fromDynamo = function(season) {
   var masked = {};
 
   if (season) {

@@ -13,9 +13,9 @@ describe("SeasonService", function() {
   let expectedSeason = {
     name: "Test Season",
     contestants: [
-      { name: "Bobby", pic: "bobby.gif", status: "Active" },
-      { name: "Susan", pic: "susan.gif", status: "Active" },
-      { name: "Tina", pic: "tina.jpg", status: "Eliminated" }
+      { name: "Bobby", pic: "bobby.gif", status: "active" },
+      { name: "Susan", pic: "susan.gif", status: "active" },
+      { name: "Tina", pic: "tina.jpg", status: "eliminated" }
     ]
   };
 
@@ -25,6 +25,27 @@ describe("SeasonService", function() {
       .promise()
       .then((res) => service.get(testConfig))
       .then((season) => expect(season).toEqual(expectedSeason))
+      .then((res) => done())
+      .catch((err) => {
+        this.fail(err);
+        done();
+      })
+  });
+
+  it("should eliminate a player", function(done) {
+    // Create a season with Susan eliminated.
+    let withSusanEliminated = expectedSeason;
+
+    withSusanEliminated
+      .contestants
+      .find((c) => c.name == "Susan")
+      .status = "eliminated";
+
+    dynamo
+      .put(testDataPutRequest(testConfig))
+      .promise()
+      .then((res) => service.eliminate(testConfig, "Susan"))
+      .then((season) => expect(season).toEqual(withSusanEliminated))
       .then((res) => done())
       .catch((err) => {
         this.fail(err);
@@ -44,17 +65,17 @@ function testDataPutRequest(config) {
         {
           "name": "Bobby",
           "pic": "bobby.gif",
-          "status": "Active"
+          "status": "active"
         },
         {
           "name": "Susan",
           "pic": "susan.gif",
-          "status": "Active"
+          "status": "active"
         },
         {
           "name": "Tina",
           "pic": "tina.jpg",
-          "status": "Eliminated"
+          "status": "eliminated"
         }
       ]
     }
