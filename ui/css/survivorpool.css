@@ -76,3 +76,27 @@
     padding: 10px 15px;
     margin-bottom: -1px;
 }
+
+/*
+ * Used to crop the current seasons images.
+ */
+.crop {
+    width: 60px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.crop img {
+    width: 180px;
+    height: 100px;
+    margin: 0 -60px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #cccccc;
+    margin: 1em 0;
+    padding: 0;
+}

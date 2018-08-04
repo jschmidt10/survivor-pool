@@ -22,7 +22,10 @@
             <button class="btn btn-primary" ng-click="eliminateContestant();">Submit</button>
         </div>
         <div class="col-md-4" ng-show="resultMessage">
-            <span class="alert alert-danger error-text">{{resultMessage}}</span>
+            <span class="alert alert-success success-text">{{resultMessage}}</span>
+        </div>
+        <div class="col-md-4" ng-show="errorMessage">
+            <span class="alert alert-danger error-text">{{errorMessage}}</span>
         </div>
     </div>
 </div>

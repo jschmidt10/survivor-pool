@@ -4,16 +4,16 @@
 	<div class="col-md-12">
 		<table class="table">
 			<thead>
-				<tr>
-					<th colspan="{{maxContestantsPerPlayer}}"><h2>{{p.name}}</h2></th>
-				</tr>
+			<tr>
+				<th colspan="{{maxContestantsPerPlayer}}"><h3 class="player-header">{{p.name}}</h3><hr/></th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td class="contestant contestant-{{c.status}}"
-						ng-repeat="c in p.contestants"><img width="75" height="100"
-						src="{{c.pic}}" /> {{c.name}}</td>
-				</tr>
+			<tr>
+				<td class="contestant contestant-{{c.status}}"
+					ng-repeat="c in p.contestants"><div class="crop"><img
+						src="{{c.pic}}"/></div> {{c.name}}</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>

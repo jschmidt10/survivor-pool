@@ -1,95 +1,105 @@
 {
-  "name": "Heroes vs Healers vs Hustlers",
+  "name": "Ghost Island",
   "current": true,
   "contestants": [
     {
-      "name": "Alan",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/f9fb5d5293ee1ace_svr_alan_ball_800x1000.jpg",
+      "name": "Brendan",
+      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/770xh/88b824f0cf448fab_brendan-shapiro_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Patrick",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/6d6a5ae79b498bbd_svr_patrick_bolton_800x1000.jpg",
+      "name": "Donathan",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/770xh/c52cdc451e1c4ce7_donathan-hurley_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Ben",
-      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/be2fd335f762c7d9_svr_ben_driebergen_800x1000.jpg",
+      "name": "Jacob",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/770xh/dcccc84c2f12afdb_jacob-derwin_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Ali",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/ad4291d3f40147fc_svr_ali_elliot_800x1000.jpg",
+      "name": "James",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/770xh/65b92f68a5fa811b_james-lim_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "JP",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/48abff7c0ea3bd52_svr_john_jp_800x1000.jpg",
+      "name": "Jenna",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/770xh/b756abf71e96d106_jenna-bowman_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Chrissy",
-      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/w170-h215/cast/603d42364f0a0821_svr_chrissy_hofbeck_800x1000.jpg",
+      "name": "Laurel",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/770xh/028b930f96820b93_laurel-johnson_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Jessica",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/ddf4cac9df0b6014_svr_jessica_johnston_800x1000.jpg",
+      "name": "Libby",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/770xh/9659fc5e68c08532_libby-vincek-_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Roark",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/c0a2b466e9acffd2_svr_roark_luskin_800x1000.jpg",
+      "name": "Michael",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/770xh/029abf62788fb46f_michael-yerger_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Cole",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/872af08205864cdd_svr_cole_medders_800x1000.jpg",
+      "name": "Stephanie G",
+      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/770xh/2b5fe3b0b41f2ded_stephanie-gonzalez_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Joe",
-      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/w170-h215/cast/5abc8b2c330393c5_svr_joe_mena_800x1000.jpg",
+      "name": "Stephanie J",
+      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/770xh/f3c0e43287303c95_stephanie-johnson_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Simone",
-      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/w170-h215/cast/990b1cd14655b38f_svr_simone_nguyen_800x1000.jpg",
+      "name": "Angela",
+      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/770xh/63a732159c21705a_angela-perkins_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Ashley",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/144b030eddc97cff_svr_ashely_nolan_800x1000.jpg",
+      "name": "Bradley",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/770xh/4168c9336a762f6e_bradley-kleihege_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Devon",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/9aef71e6d5e3c30e_svr_devon_pinto_800x1000.jpg",
+      "name": "Chelsea",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/770xh/5ed97be6975b45de_chelsea-townsend_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Katrina",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/28bfa4f203556622_svr_katrina_radke_800x1000.jpg",
+      "name": "Chris",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/770xh/a73d63e815ed360d_chris-noble_surivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Lauren",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/2646b6ddbcc25ee0_svr_lauren_rimmer_800x1000.jpg",
+      "name": "Desiree",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/770xh/6b06194f39847059_desiree-afuye_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Ryan",
-      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/w170-h215/cast/a2933688cdfd585a_svr_ryan_urich_800x1000.jpg",
+      "name": "Domenick",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/770xh/7a418d31807cceaf_domenick-abbate_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Desi",
-      "pic": "http://wwwimage4.cbsstatic.com/thumbnails/photos/w170-h215/cast/45d20643cbabea14_svr_desiree_williams_800x1000.jpg",
+      "name": "Kellyn",
+      "pic": "http://wwwimage3.cbsstatic.com/thumbnails/photos/770xh/9aa53bf4dedd174c_kellyn-bechtold_survivor_bs.jpg",
       "status": "active"
     },
     {
-      "name": "Mike",
-      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/w170-h215/cast/9389f05347cb2e42_svr_mike_zahalsky_800x1000.jpg",
+      "name": "Morgan",
+      "pic": "http://wwwimage1.cbsstatic.com/thumbnails/photos/770xh/7a5c499b85561f0d_morgan-ricke_survivor_bs.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Sebastian",
+      "pic": "http://wwwimage5.cbsstatic.com/thumbnails/photos/770xh/9591c13931513973_sebastian-noel_survivor_bs.jpg",
+      "status": "active"
+    },
+    {
+      "name": "Wendell",
+      "pic": "http://wwwimage2.cbsstatic.com/thumbnails/photos/770xh/075c63ac414e1697_wendell-holland_survivor_bs.jpg",
       "status": "active"
     }
   ]

@@ -4,11 +4,22 @@ module.controller('PoolController', [ '$scope', '$http', '$routeParams', 'appCon
   function($scope, $http, $routeParams, appConfig) {
     var poolName = $routeParams.name;
 
+    function maxContestants(players) {
+      var max = 0;
+      players.forEach((p) => {
+        if (p.contestants.length > max) {
+          max = p.contestants.length;
+        }
+      });
+      return max;
+    }
+
     $http
       .get(appConfig.rest.getPool + "/" + poolName)
       .success(function(results) {
         $scope.pool = results;
-		$scope.maxContestantsPerPlayer = results.players.reduce((max, cur) => Math.max(max, cur));
+		$scope.maxContestantsPerPlayer = maxContestants(results.players);
+		console.log("max contestants = " + $scope.maxContestantsPerPlayer);
 	  });
   }
 ]);

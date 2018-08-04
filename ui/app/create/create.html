@@ -62,8 +62,8 @@
                                 dnd-effect-allowed="move"
                                 dnd-selected="models.selected = castaway"
                                 class="contestant contestant-{{castaway.status}}"
-                                ng-class="{'selected': models.selected === castaway}"><img
-                                    width="75" height="100" src="{{castaway.pic}}"/>
+                                ng-class="{'selected': models.selected === castaway}"><div class="crop"><img
+                                    src="{{castaway.pic}}"/></div>
                                 {{castaway.name}}
                             </li>
                         </ul>
@@ -87,8 +87,8 @@
                         dnd-effect-allowed="move"
                         dnd-selected="models.selected = castaway"
                         class="contestant contestant-{{castaway.status}}"
-                        ng-class="{'selected': models.selected === castaway}"><img
-                            width="75" height="100" src="{{castaway.pic}}"/>
+                        ng-class="{'selected': models.selected === castaway}"><div class="crop"><img
+                            src="{{castaway.pic}}"/></div>
                         {{castaway.name}}
                     </li>
                 </ul>
