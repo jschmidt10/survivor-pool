@@ -19,7 +19,6 @@ module.controller('PoolController', [ '$scope', '$http', '$routeParams', 'appCon
       .success(function(results) {
         $scope.pool = results;
 		$scope.maxContestantsPerPlayer = maxContestants(results.players);
-		console.log("max contestants = " + $scope.maxContestantsPerPlayer);
 	  });
   }
 ]);
