@@ -2,6 +2,7 @@
 
 .contestant {
 	color: white;
+	padding: 10px;
 	border: 1px solid white;
 }
 
@@ -15,10 +16,6 @@
 
 .create-pool-form {
 	padding-top: 10px;
-}
-
-.error-text {
-	font-weight: bold;
 }
 
 /**

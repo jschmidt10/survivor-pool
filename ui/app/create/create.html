@@ -2,14 +2,20 @@
 
 <div class="form-horizontal create-pool-form">
     <div class="form-group">
-        <label for="poolName" class="col-md-1">Pool Name</label>
+        <div class="col-md-6">
+            Add some friends to your pool (don't forget yourself)! Then drag and
+            drop the castaways to your friends. Hit 'Create' when you're all done.
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="poolName" class="col-md-2">Pool Name</label>
         <div class="col-md-5">
             <input type="text" class="form-control" value="My new survivor pool" id="poolName"
                    ng-model="poolName"/>
         </div>
     </div>
-    <div class="form-group">
-        <label for="newPlayer" class="col-md-1">Add a friend</label>
+    <div class="form-group row">
+        <label for="newPlayer" class="col-md-2">Add a friend</label>
         <div class="col-md-4">
             <input type="text" class="form-control" value="Someone's name" id="newPlayer"
                    ng-model="newPlayer"/>
@@ -20,18 +26,12 @@
             </button>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group row">
         <div class="col-md-2 col-md-offset-1">
             <button class="btn btn-primary" ng-click="createPool();">Create</button>
         </div>
         <div class="col-md-4" ng-show="errorMessage">
             <span class="alert alert-danger error-text">{{errorMessage}}</span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-6 col-md-offset-1">
-            Add some friends to your pool (don't forget yourself)! Then drag and
-            drop the castaways to your friends. Hit 'Create' when you're all done.
         </div>
     </div>
 </div>
@@ -67,8 +67,6 @@
                                 {{castaway.name}}
                             </li>
                         </ul>
-                    </div>
-                    <div class="panel-footer">
                     </div>
                 </div>
             </div>
