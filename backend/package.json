@@ -11,6 +11,7 @@
   "dependencies": {
     "aws-sdk": "^2.65.0",
     "flatmap": "0.0.3",
-    "jasmine-node": "^1.14.5"
+    "jasmine-node": "^1.14.5",
+    "survivorpool-core": "file:../core/survivorpool-core-1.0.0.tgz"
   }
 }

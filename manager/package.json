@@ -11,5 +11,8 @@
     "url": "github.com/jschmidt10/survivor-pool"
   },
   "author": "jschmidt10",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "survivorpool-core": "file:../core/survivorpool-core-1.0.0.tgz"
+  }
 }

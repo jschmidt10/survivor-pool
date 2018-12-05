@@ -5,17 +5,13 @@
 
 cd core/
 
-npm test
-
-if [[ $? -ne 0 ]]
+if ! npm test
 then
   echo "Failed tests for survivorpool-core"
   exit 1
 fi
 
-npm pack
-
-if [[ $? -ne 0 ]]
+if ! npm pack
 then
   echo "Failed to build survivorpool-core"
   exit 1
@@ -26,17 +22,13 @@ do
   echo "Re-installing core into ${module}"
   cd ../${module}/
 
-  npm install ../core/survivorpool-core*.tgz
-
-  if [[ $? -ne 0 ]]
+  if ! npm install ../core/survivorpool-core*.tgz
   then
     echo "Failed to install core into ${module}"
     exit 1
   fi
 
-  npm test
-
-  if [[ $? -ne 0 ]]
+  if ! npm test
   then
     echo "Failed tests for ${module}"
     exit 1
