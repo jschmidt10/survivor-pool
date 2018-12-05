@@ -1,0 +1,18 @@
+{
+  "name": "survivorpool-ui",
+  "version": "1.0.0",
+  "description": "survivorpool ui",
+  "dependencies": {
+    "angular": "1.7.x",
+    "angular-route": "1.7.x"
+  },
+  "scripts": {
+    "build": "browserify --entry app/app.js --outfile dist/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/jschmidt10/survivor-pool"
+  },
+  "author": "jschmidt10",
+  "license": "ISC"
+}

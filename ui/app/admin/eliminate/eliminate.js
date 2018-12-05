@@ -1,7 +1,10 @@
-var module = angular.module('survivor.admin.eliminate', []);
+var angular = require('angular');
+require('../../config/config');
 
-module.controller('EliminationController', [ '$scope', '$http', '$window',
-  function($scope, $http, $window) {
+var module = angular.module('survivor.admin.eliminate', ['survivor.config']);
+
+module.controller('EliminationController', [ '$scope', '$http', '$window', 'appConfig',
+  function($scope, $http, $window, appConfig) {
 	// Eliminates a player
 	$scope.eliminateContestant = function() {
       // Disable any previous messages
@@ -14,7 +17,7 @@ module.controller('EliminationController', [ '$scope', '$http', '$window',
 	  };
 
 	  $http
-	    .post("https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/eliminate", params)
+	    .post(appConfig.rest.eliminateContestant, params)
 	    .then(
 	      (res) => {
 	        $scope.resultMessage = res.data;

@@ -1,8 +1,11 @@
+var angular = require('angular');
+require('../config/config');
+
 var module = angular.module('survivor.create', [ 'dndLists', 'survivor.config' ]);
 
 module.controller('CreateController', [ '$scope', '$http', '$window', 'appConfig',
   function($scope, $http, $window, appConfig) {
-    var viewPoolUrl = '#pool?name=';
+    var viewPoolUrl = '#!/pool?name=';
 			
     $scope.models = {
       selected : null,

@@ -1,3 +1,6 @@
+var angular = require('angular');
+require('../config/config');
+
 var module = angular.module('survivor.pool', [ 'survivor.config' ]);
 
 module.controller('PoolController', [ '$scope', '$http', '$routeParams', 'appConfig',
@@ -16,9 +19,9 @@ module.controller('PoolController', [ '$scope', '$http', '$routeParams', 'appCon
 
     $http
       .get(appConfig.rest.getPool + "/" + poolName)
-      .success(function(results) {
-        $scope.pool = results;
-		$scope.maxContestantsPerPlayer = maxContestants(results.players);
+      .then((results) => {
+        $scope.pool = results.data;
+		$scope.maxContestantsPerPlayer = maxContestants(results.data.players);
 	  });
   }
 ]);
