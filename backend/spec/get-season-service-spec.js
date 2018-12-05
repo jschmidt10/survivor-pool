@@ -8,7 +8,6 @@ let dynamo = DynamoFactory.newInstance();
 let testConfig = new AWSConfig("survivorpool", "test");
 
 describe("GetSeasonService", function() {
-
   let service = new SeasonService();
   let expectedSeason = {
     name: "Test Season",
@@ -23,13 +22,13 @@ describe("GetSeasonService", function() {
     dynamo
       .put(testDataPutRequest(testConfig))
       .promise()
-      .then((res) => service.get(testConfig))
-      .then((season) => expect(season).toEqual(expectedSeason))
-      .then((res) => done())
-      .catch((err) => {
+      .then(res => service.get(testConfig))
+      .then(season => expect(season).toEqual(expectedSeason))
+      .then(res => done())
+      .catch(err => {
         this.fail(err);
         done();
-      })
+      });
   });
 });
 
@@ -37,24 +36,24 @@ function testDataPutRequest(config) {
   return {
     TableName: config.table,
     Item: {
-      "id":  "SEASON",
-      "name": "Test Season",
-      "env": config.env,
-      "contestants": [
+      id: "SEASON",
+      name: "Test Season",
+      env: config.env,
+      contestants: [
         {
-          "name": "Bobby",
-          "pic": "bobby.gif",
-          "status": "Active"
+          name: "Bobby",
+          pic: "bobby.gif",
+          status: "Active"
         },
         {
-          "name": "Susan",
-          "pic": "susan.gif",
-          "status": "Active"
+          name: "Susan",
+          pic: "susan.gif",
+          status: "Active"
         },
         {
-          "name": "Tina",
-          "pic": "tina.jpg",
-          "status": "Eliminated"
+          name: "Tina",
+          pic: "tina.jpg",
+          status: "Eliminated"
         }
       ]
     }

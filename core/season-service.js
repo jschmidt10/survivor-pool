@@ -7,7 +7,6 @@ const SeasonSchema = require("./season-dynamo-schema");
  * Service for fetching and saving the current Survivor season.
  */
 module.exports = class SeasonService {
-
   constructor() {
     this.dynamo = DynamoFactory.newInstance();
   }
@@ -17,13 +16,12 @@ module.exports = class SeasonService {
    */
   get(config) {
     return new Promise((resolve, reject) => {
-      this
-        .dynamo
+      this.dynamo
         .get(SeasonSchema.getRequest(config))
         .promise()
-        .then((data) => SeasonSchema.fromDynamo(data.Item))
-        .then((season) => resolve(season))
-        .catch((err) => reject(err));
+        .then(data => SeasonSchema.fromDynamo(data.Item))
+        .then(season => resolve(season))
+        .catch(err => reject(err));
     });
   }
 
@@ -32,12 +30,11 @@ module.exports = class SeasonService {
    */
   save(config, season) {
     return new Promise((resolve, reject) => {
-      this
-        .dynamo
+      this.dynamo
         .put(SeasonSchema.putRequest(config, season))
         .promise()
-        .then((res) => resolve(SeasonSchema.fromDynamo(season)))
-        .catch((err) => reject(err));
+        .then(res => resolve(SeasonSchema.fromDynamo(season)))
+        .catch(err => reject(err));
     });
   }
 
@@ -50,12 +47,11 @@ module.exports = class SeasonService {
     }
 
     return new Promise((resolve, reject) => {
-      this
-        .get(config)
-        .then((season) => findAndEliminate(season, contestant))
-        .then((season) => this.save(config, season))
-        .then((season) => resolve(season))
-        .catch((err) => reject(err));
+      this.get(config)
+        .then(season => findAndEliminate(season, contestant))
+        .then(season => this.save(config, season))
+        .then(season => resolve(season))
+        .catch(err => reject(err));
     });
   }
 };
@@ -64,12 +60,13 @@ module.exports = class SeasonService {
  * Finds a contestant and updates their status to eliminate.
  */
 function findAndEliminate(season, contestant) {
-  let toEliminate = season.contestants.find(function (c) { return c.name == contestant; });
+  let toEliminate = season.contestants.find(function(c) {
+    return c.name == contestant;
+  });
 
   if (!toEliminate) {
     throw Error("Could not find a contestant named " + player + ".");
-  }
-  else {
+  } else {
     toEliminate.status = "eliminated";
     return season;
   }

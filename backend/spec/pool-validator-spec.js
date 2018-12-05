@@ -16,14 +16,13 @@ var season = {
 };
 
 describe("Validator", function() {
-
   // TODO: Add other validation failures
   it("should pass when all criteria are met", function(done) {
     var pool = newTestPool();
     validator
       .validate(pool, season)
-      .then((res) => done())
-      .catch((err) => {
+      .then(res => done())
+      .catch(err => {
         this.fail(err);
         done();
       });
@@ -35,11 +34,11 @@ describe("Validator", function() {
 
     validator
       .validate(pool, season)
-      .then((res) => {
+      .then(res => {
         this.fail("Expected validation to fail");
         done();
       })
-      .catch((err) => {
+      .catch(err => {
         expect(err.message).toBe(PoolValidatorErrors.NOT_NAMED);
         done();
       });
@@ -48,9 +47,9 @@ describe("Validator", function() {
 
 function newTestPool() {
   return {
-      name: "My Pool",
-      url: "http://mypool.com",
-      players: [
+    name: "My Pool",
+    url: "http://mypool.com",
+    players: [
       {
         name: "Tommy",
         contestants: [

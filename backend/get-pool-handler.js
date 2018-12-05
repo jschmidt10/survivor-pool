@@ -16,10 +16,9 @@ module.exports = class GetPoolHandler extends AwsRequestHandler {
     let pathParts = path.split("/");
     let poolName = decodeURIComponent(pathParts[pathParts.length - 1]);
 
-    this
-      .service
+    this.service
       .execute(this.config, poolName)
-      .then((res) => callback(null, AWSResponse(200, res)))
-      .catch((err) => callback(null, AWSResponse(400, err)));
+      .then(res => callback(null, AWSResponse(200, res)))
+      .catch(err => callback(null, AWSResponse(400, err)));
   }
 };

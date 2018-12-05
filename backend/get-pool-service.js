@@ -7,7 +7,6 @@ const NoPoolNameGivenError = Error("Requires parameter 'poolName'.");
 const PoolNotFoundError = Error("Could not find pool with the given name.");
 
 module.exports = class GetPoolService {
-
   constructor(seasonService = new SeasonService()) {
     this.seasonService = seasonService;
     this.dynamo = DynamoFactory.newInstance();
@@ -21,16 +20,16 @@ module.exports = class GetPoolService {
 
     return new Promise((resolve, reject) => {
       validateParams(poolName)
-        .then((res) => this.seasonService.get(config))
-        .then((fetchedSeason) => {
+        .then(res => this.seasonService.get(config))
+        .then(fetchedSeason => {
           season = fetchedSeason;
           let request = fetchPoolRequest(config, poolName);
           return this.dynamo.get(request).promise();
         })
-        .then((res) => res.Item)
-        .then((pool) => combine(season, pool))
-        .then((combined) => resolve(mask(combined)))
-        .catch((err) => reject(err));
+        .then(res => res.Item)
+        .then(pool => combine(season, pool))
+        .then(combined => resolve(mask(combined)))
+        .catch(err => reject(err));
     });
   }
 };
@@ -43,8 +42,8 @@ function combine(season, pool) {
     throw PoolNotFoundError;
   }
 
-  getContestants(pool).forEach((c) => {
-    let sc = season.contestants.find((s) => s.name === c.name);
+  getContestants(pool).forEach(c => {
+    let sc = season.contestants.find(s => s.name === c.name);
     if (sc) {
       c.pic = sc.pic;
       c.status = sc.status;
@@ -60,8 +59,8 @@ function combine(season, pool) {
 function getContestants(pool) {
   var allContestants = [];
 
-  pool.players.forEach((player) => {
-    player.contestants.forEach((c) => allContestants.push(c));
+  pool.players.forEach(player => {
+    player.contestants.forEach(c => allContestants.push(c));
   });
 
   return allContestants;
@@ -85,10 +84,8 @@ function fetchPoolRequest(config, poolName) {
  */
 function validateParams(poolName) {
   return new Promise((resolve, reject) => {
-    if (!poolName)
-      reject(NoPoolNameGivenError);
-    else
-      resolve(poolName);
+    if (!poolName) reject(NoPoolNameGivenError);
+    else resolve(poolName);
   });
 }
 

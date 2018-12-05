@@ -8,7 +8,6 @@ let dynamo = DynamoFactory.newInstance();
 let testConfig = new AWSConfig("survivorpool", "test");
 
 describe("CreatePoolService", function() {
-
   let service = new CreatePoolService();
   let testSeason = {
     name: "Season 1",
@@ -24,11 +23,11 @@ describe("CreatePoolService", function() {
     players: [
       {
         name: "Player1",
-        contestants: [ { name: "Contestant1" } ]
+        contestants: [{ name: "Contestant1" }]
       },
       {
         name: "Player2",
-        contestants: [ { name: "Contestant2" } ]
+        contestants: [{ name: "Contestant2" }]
       }
     ]
   };
@@ -40,11 +39,11 @@ describe("CreatePoolService", function() {
     players: [
       {
         name: "Player1",
-        contestants: [ { name: "Contestant1" } ]
+        contestants: [{ name: "Contestant1" }]
       },
       {
         name: "Player2",
-        contestants: [ { name: "Contestant2" } ]
+        contestants: [{ name: "Contestant2" }]
       }
     ]
   };
@@ -60,11 +59,11 @@ describe("CreatePoolService", function() {
     dynamo
       .put(putSeasonRequest(testConfig, testSeason))
       .promise()
-      .then((res) => service.execute(testConfig, poolToSave))
-      .then((res) => dynamo.get(getPoolRequest(testConfig, poolToSave)).promise())
-      .then((res) => expect(res.Item).toEqual(expectedPool))
-      .then((res) => done())
-      .catch((err) => {
+      .then(res => service.execute(testConfig, poolToSave))
+      .then(res => dynamo.get(getPoolRequest(testConfig, poolToSave)).promise())
+      .then(res => expect(res.Item).toEqual(expectedPool))
+      .then(res => done())
+      .catch(err => {
         this.fail(err);
         done();
       });
@@ -74,11 +73,13 @@ describe("CreatePoolService", function() {
     dynamo
       .put(putSeasonRequest(testConfig, testSeason))
       .promise()
-      .then((res) => service.execute(testConfig, poolToSave))
-      .then((res) => dynamo.get(getListItemRequest(testConfig, poolToSave)).promise())
-      .then((res) => expect(res.Item).toEqual(expectedListEntry))
-      .then((res) => done())
-      .catch((err) => {
+      .then(res => service.execute(testConfig, poolToSave))
+      .then(res =>
+        dynamo.get(getListItemRequest(testConfig, poolToSave)).promise()
+      )
+      .then(res => expect(res.Item).toEqual(expectedListEntry))
+      .then(res => done())
+      .catch(err => {
         this.fail(err);
         done();
       });
@@ -89,10 +90,10 @@ function putSeasonRequest(config, season) {
   return {
     TableName: config.table,
     Item: {
-      "id":  "SEASON",
-      "name": season.name,
-      "env": config.env,
-      "contestants": season.contestants
+      id: "SEASON",
+      name: season.name,
+      env: config.env,
+      contestants: season.contestants
     }
   };
 }

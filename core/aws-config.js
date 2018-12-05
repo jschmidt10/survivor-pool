@@ -8,7 +8,7 @@ const defaultEnv = "prod";
  */
 module.exports = class AWSConfig {
   constructor(table, env) {
-    this.table = (table != null ? table : defaultTable);
-    this.env = (env != null ? env : defaultEnv);
+    this.table = table != null ? table : defaultTable;
+    this.env = env != null ? env : defaultEnv;
   }
 };

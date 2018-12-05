@@ -25,16 +25,18 @@ module.exports = class EliminatePlayerHandler extends AwsRequestHandler {
 
     if (this.adminPass == undefined) {
       callback(null, AWSResponse(400, NoAdminPassError));
-    }
-    else if (password != this.adminPass) {
+    } else if (password != this.adminPass) {
       callback(null, AWSResponse(400, InvalidPassError));
-    }
-    else {
-      this
-        .service
+    } else {
+      this.service
         .eliminate(this.config, body.contestant)
-        .then((res) => callback(null, AWSResponse(200, "Successfully eliminated " + body.contestant)))
-        .catch((err) => callback(null, AWSResponse(400, err)));
+        .then(res =>
+          callback(
+            null,
+            AWSResponse(200, "Successfully eliminated " + body.contestant)
+          )
+        )
+        .catch(err => callback(null, AWSResponse(400, err)));
     }
   }
 };

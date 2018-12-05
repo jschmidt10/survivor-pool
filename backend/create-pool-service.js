@@ -5,7 +5,6 @@ const SeasonService = require("survivorpool-core/season-service");
 const PoolValidator = require("./pool-validator");
 
 module.exports = class CreatePoolService {
-
   constructor(seasonService = new SeasonService()) {
     this.seasonService = seasonService;
     this.dynamo = DynamoFactory.newInstance();
@@ -17,14 +16,13 @@ module.exports = class CreatePoolService {
    */
   execute(config, pool) {
     return new Promise((resolve, reject) => {
-      this
-        .seasonService
+      this.seasonService
         .get(config)
-        .then((season) => this.validator.validate(pool, season))
-        .then((validPool) => insertPoolRecord(this.dynamo, config, pool))
-        .then((res) => insertPoolListRecord(this.dynamo, config, pool))
-        .then((res) => resolve(res))
-        .catch((err) => reject(err));
+        .then(season => this.validator.validate(pool, season))
+        .then(validPool => insertPoolRecord(this.dynamo, config, pool))
+        .then(res => insertPoolListRecord(this.dynamo, config, pool))
+        .then(res => resolve(res))
+        .catch(err => reject(err));
     });
   }
 };
@@ -33,7 +31,9 @@ module.exports = class CreatePoolService {
  * Inserts an entry into the pool list for searching.
  */
 function insertPoolListRecord(dynamo, config, pool) {
-  return dynamo.put(insertRequest(config, poolListItem(config, pool))).promise();
+  return dynamo
+    .put(insertRequest(config, poolListItem(config, pool)))
+    .promise();
 }
 
 /*
@@ -76,10 +76,10 @@ function poolItem(config, pool) {
   };
 
   // Masks out the fields we don't need
-  item.players = pool.players.map((p) => {
+  item.players = pool.players.map(p => {
     return {
       name: p.name,
-      contestants: p.contestants.map((c) => ({ name: c.name }))
+      contestants: p.contestants.map(c => ({ name: c.name }))
     };
   });
 

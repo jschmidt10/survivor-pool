@@ -13,10 +13,9 @@ module.exports = class GetSeasonHandler extends AwsRequestHandler {
   }
 
   invokeService(path, body, callback) {
-    this
-      .service
+    this.service
       .get(this.config)
-      .then((res) => callback(null, AWSResponse(200, res)))
-      .catch((err) => callback(null, AWSResponse(400, err)));
+      .then(res => callback(null, AWSResponse(200, res)))
+      .catch(err => callback(null, AWSResponse(400, err)));
   }
 };

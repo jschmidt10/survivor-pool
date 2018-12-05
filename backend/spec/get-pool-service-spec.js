@@ -8,7 +8,6 @@ let dynamo = DynamoFactory.newInstance();
 let testConfig = new AWSConfig("survivorpool", "test");
 
 describe("GetPoolService", function() {
-
   let service = new GetPoolService();
   let testSeason = {
     name: "Season 1",
@@ -24,11 +23,11 @@ describe("GetPoolService", function() {
     players: [
       {
         name: "Player1",
-        contestants: [ { name: "Contestant1" } ]
+        contestants: [{ name: "Contestant1" }]
       },
       {
         name: "Player2",
-        contestants: [ { name: "Contestant2" } ]
+        contestants: [{ name: "Contestant2" }]
       }
     ]
   };
@@ -39,11 +38,11 @@ describe("GetPoolService", function() {
     players: [
       {
         name: "Player1",
-        contestants: [ { name: "Contestant1", pic: "c1.jpg", status: "active" } ]
+        contestants: [{ name: "Contestant1", pic: "c1.jpg", status: "active" }]
       },
       {
         name: "Player2",
-        contestants: [ { name: "Contestant2", pic: "c2.jpg", status: "active" } ]
+        contestants: [{ name: "Contestant2", pic: "c2.jpg", status: "active" }]
       }
     ]
   };
@@ -52,27 +51,27 @@ describe("GetPoolService", function() {
     dynamo
       .put(putSeasonRequest(testConfig, testSeason))
       .promise()
-      .then((res) => dynamo.put(putPoolRequest(testConfig, poolToSave)).promise())
-      .then((res) => service.execute(testConfig, expectedPool.name))
-      .then((pool) => expect(pool).toEqual(expectedPool))
-      .then((res) => done())
-      .catch((err) => {
+      .then(res => dynamo.put(putPoolRequest(testConfig, poolToSave)).promise())
+      .then(res => service.execute(testConfig, expectedPool.name))
+      .then(pool => expect(pool).toEqual(expectedPool))
+      .then(res => done())
+      .catch(err => {
         this.fail(err);
         done();
-      })
+      });
   });
 
   it("should return a PoolNotFoundError when not found", function(done) {
     dynamo
       .put(putSeasonRequest(testConfig, testSeason))
       .promise()
-      .then((res) => dynamo.put(putPoolRequest(testConfig, poolToSave)).promise())
-      .then((res) => service.execute(testConfig, "Non Existent Pool"))
-      .then((res) => {
+      .then(res => dynamo.put(putPoolRequest(testConfig, poolToSave)).promise())
+      .then(res => service.execute(testConfig, "Non Existent Pool"))
+      .then(res => {
         this.fail(Error("We expected to not find a pool, but found one."));
         done();
       })
-      .catch((err) => {
+      .catch(err => {
         expect(err.message).toBe("Could not find pool with the given name.");
         done();
       });
@@ -83,10 +82,10 @@ function putSeasonRequest(config, season) {
   return {
     TableName: config.table,
     Item: {
-      "id":  "SEASON",
-      "name": season.name,
-      "env": config.env,
-      "contestants": season.contestants
+      id: "SEASON",
+      name: season.name,
+      env: config.env,
+      contestants: season.contestants
     }
   };
 }
@@ -95,11 +94,11 @@ function putPoolRequest(config, pool) {
   return {
     TableName: config.table,
     Item: {
-      "id":  "POOL:" + pool.name,
-      "env": config.env,
-      "name": pool.name,
-      "url": pool.url,
-      "players": pool.players
+      id: "POOL:" + pool.name,
+      env: config.env,
+      name: pool.name,
+      url: pool.url,
+      players: pool.players
     }
   };
 }

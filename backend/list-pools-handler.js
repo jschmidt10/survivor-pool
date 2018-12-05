@@ -13,10 +13,9 @@ module.exports = class ListPoolsHandler extends AwsRequestHandler {
   }
 
   invokeService(path, body, callback) {
-    this
-      .service
+    this.service
       .execute(this.config)
-      .then((res) => callback(null, AWSResponse(200, res)))
-      .catch((err) => callback(null, AWSResponse(400, err)));
+      .then(res => callback(null, AWSResponse(200, res)))
+      .catch(err => callback(null, AWSResponse(400, err)));
   }
 };

@@ -11,11 +11,11 @@ let url = process.env["URL"];
 
 module.exports.handler = function(event, context, callback) {
   rp(url)
-    .then((res) => {
+    .then(res => {
       console.log(JSON.stringify(res));
       callback(null, res);
     })
-    .catch((err) => {
+    .catch(err => {
       console.log("Error occurred.");
       console.log(JSON.stringify(err));
       callback(err, null);

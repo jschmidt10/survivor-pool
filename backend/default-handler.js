@@ -14,4 +14,4 @@ module.exports = class DefaultHandler {
   handle(event, callback) {
     callback(null, this.response);
   }
-}
+};

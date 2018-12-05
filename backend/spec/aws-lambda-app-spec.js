@@ -12,10 +12,10 @@ class TestRequestHandler extends AWSRequestHandler {
   handle(event, callback) {
     callback(null, AWSResponse(200, "Ok"));
   }
-};
+}
 
 let handler = new TestRequestHandler();
-let app = new AWSLambdaApp([ handler ]);
+let app = new AWSLambdaApp([handler]);
 
 describe("aws-lambda-app", function() {
   it("should return 405 with incorrect method", function(done) {

@@ -3,7 +3,6 @@
 const DynamoFactory = require("survivorpool-core/aws-dynamo-factory");
 
 module.exports = class ListPoolsService {
-
   constructor() {
     this.dynamo = DynamoFactory.newInstance();
   }
@@ -19,12 +18,11 @@ module.exports = class ListPoolsService {
     };
 
     return new Promise((resolve, reject) => {
-      this
-        .dynamo
+      this.dynamo
         .query(request)
         .promise()
-        .then((data) => resolve(maskPools(data.Items)))
-        .catch((err) => reject(err));
+        .then(data => resolve(maskPools(data.Items)))
+        .catch(err => reject(err));
     });
   }
 };
@@ -35,7 +33,7 @@ module.exports = class ListPoolsService {
 function maskPools(pools) {
   var masked = [];
   if (pools) {
-    masked = pools.map((p) => ({ name: p.name, url: p.url }));
+    masked = pools.map(p => ({ name: p.name, url: p.url }));
   }
   return masked;
 }

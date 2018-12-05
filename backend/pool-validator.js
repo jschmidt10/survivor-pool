@@ -8,7 +8,6 @@ const Errors = require("./pool-validator-errors.js");
  * Validates survivor pools against the current season.
  */
 module.exports = class PoolValidator {
-
   /*
    * Validates a pool.
    */
@@ -21,8 +20,7 @@ module.exports = class PoolValidator {
         allPlayersHaveContestants(pool);
         allValidContestants(pool, season);
         resolve(pool);
-      }
-      catch (err) {
+      } catch (err) {
         reject(err);
       }
     });
@@ -40,15 +38,17 @@ function poolIsNamed(pool) {
  * Validates all the contestants in the season are assigned in the pool.
  */
 function noUnassignedContestants(pool, season) {
-  var assigned = flatmap(pool.players, (p) => p.contestants.map((c) => c.name));
-  season.contestants.forEach((c) => assert(assigned.indexOf(c.name) >= 0, Errors.UNASSIGN));
+  var assigned = flatmap(pool.players, p => p.contestants.map(c => c.name));
+  season.contestants.forEach(c =>
+    assert(assigned.indexOf(c.name) >= 0, Errors.UNASSIGN)
+  );
 }
 
 /**
  * Validates no contestant is assigned to multiple players.
  */
 function noDoubleAssignments(pool, season) {
-  var set = new Set(flatmap(pool.players, (p) => p.contestants.map((c) => c.name)));
+  var set = new Set(flatmap(pool.players, p => p.contestants.map(c => c.name)));
   assert(set.size == season.contestants.length, Errors.DOUBLE_ASSIGN);
 }
 
@@ -56,15 +56,19 @@ function noDoubleAssignments(pool, season) {
  * Validates all players in the pool have at least one contestant.
  */
 function allPlayersHaveContestants(pool) {
-  pool.players.forEach((p) => assert(p.contestants.length > 0, Errors.EMPTY_PLAYER));
+  pool.players.forEach(p =>
+    assert(p.contestants.length > 0, Errors.EMPTY_PLAYER)
+  );
 }
 
 /**
  * Validates all contestants exist in the season.
  */
 function allValidContestants(pool, season) {
-  var valid = season.contestants.map((c) => c.name);
-  var assigned = flatmap(pool.players, (p) => p.contestants);
+  var valid = season.contestants.map(c => c.name);
+  var assigned = flatmap(pool.players, p => p.contestants);
 
-  assigned.forEach((c) => assert(valid.indexOf(c.name) >= 0, Errors.INVALID_CONTESTANT));
+  assigned.forEach(c =>
+    assert(valid.indexOf(c.name) >= 0, Errors.INVALID_CONTESTANT)
+  );
 }
