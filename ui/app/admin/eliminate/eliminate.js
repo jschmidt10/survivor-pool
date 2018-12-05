@@ -1,4 +1,4 @@
-var module = angular.module('admin.eliminate', []);
+var module = angular.module('survivor.admin.eliminate', []);
 
 module.controller('EliminationController', [ '$scope', '$http', '$window',
   function($scope, $http, $window) {

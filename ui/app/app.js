@@ -1,18 +1,33 @@
-var survivorApp = angular.module('survivor', [ 'survivor.config', 'survivor.find',
-		'survivor.pool', 'survivor.create', 'ngRoute' ]);
+var survivor = angular.module('survivor',
+  [
+    'survivor.config',
+    'survivor.find',
+	'survivor.pool',
+	'survivor.create',
+	'survivor.admin.eliminate',
+	'ngRoute'
+  ]);
 
-// routes
-survivorApp.config([ '$routeProvider', function($routeProvider) {
-	$routeProvider.when('/create', {
+survivor.config([ '$routeProvider', $routeProvider => {
+	$routeProvider
+	  .when('/admin', {
+      		templateUrl : 'app/admin/eliminate/eliminate.html',
+      		controller : 'EliminationController'
+      })
+	  .when('/create', {
 		templateUrl : 'app/create/create.html',
 		controller : 'CreateController'
-	}).when('/find', {
+	  })
+	  .when('/find', {
 		templateUrl : 'app/find/find.html',
 		controller : 'FindController'
-	}).when('/pool', {
+	  })
+	  .when('/pool', {
 		templateUrl : 'app/pool/pool.html',
 		controller : 'PoolController'
-	}).otherwise({
+	  })
+	  .otherwise({
 		templateUrl : 'app/intro/intro.html'
-	});
-} ]);
+	  });
+  }
+]);
