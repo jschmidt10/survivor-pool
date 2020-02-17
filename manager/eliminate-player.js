@@ -12,15 +12,17 @@ let seasonService = new SeasonService();
  * Updates the given player to have an eliminated status.
  */
 function eliminatePlayer(season, player) {
+  console.log(JSON.stringify(season, 0, 4));
+
   let toEliminate = season.contestants.find(function(c) {
     return c.name == player;
   });
 
-  if (!toEliminate) {
-    throw Error("Could not find a player named " + player);
+  if (toEliminate === undefined) {
+    return Promise.reject(new Error("Could not find a player named " + player));
   } else {
     toEliminate.status = "eliminated";
-    return season;
+    return Promise.resolve(season);
   }
 }
 

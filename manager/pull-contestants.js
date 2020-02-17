@@ -2,37 +2,31 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 let season = {
-  name: "Edge of Extinction",
+  name: "Winners at War",
   current: true,
   contestants: []
 };
 
+function onComplete() {
+  console.log(JSON.stringify(season, null, 4));
+}
+
 function parseContestantPage(url, callback) {
   request(url, {}, (err, resp, data) => {
     let $ = cheerio.load(data);
-    let imgNode = $("img[id=galleryDetailImage]");
-    let name = imgNode.attr("alt");
-    let pic = imgNode.attr("src");
 
-    // All the actual contestants end with (XXX Tribe)
-    if (name && name.endsWith("Tribe)")) {
-      callback(name, pic);
-    }
+    $("img[class='thumb lazy']").each((index, element) => {
+      var fullName = element.attribs['alt'];
+      var pic = element.attribs['data-src'];
+      var firstName = fullName.split(' ')[0];
 
-    try {
-      let nextLink = $("div[class=photoGalleryButtons]").children("a").get(1).attribs.href;
-      parseContestantPage(`https://www.cbs.com${nextLink}`, callback);
-    }
-    catch(e) {
-      // done
-      console.log(JSON.stringify(season, null, 4));
-    }
-  });  
+      if (firstName != "Jeff") {
+        season.contestants.push({status: "active", name: firstName, pic});
+      }
+    });
+
+    callback();
+  });
 }
 
-function onContestant(name, pic) {
-  let shortName = name.split(' ')[0];
-  season.contestants.push({status: "active", name: shortName, pic});
-}
-
-parseContestantPage("https://www.cbs.com/shows/survivor/photos/1008636/who-s-in-the-cast-of-survivor-season-38-edge-of-extinction-/133095/dan-the-wardog-dasilva-manu-tribe-/", onContestant);
+parseContestantPage("https://www.cbs.com/shows/survivor/cast/", onComplete);
