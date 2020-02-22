@@ -1,3 +1,3 @@
 # survivor-pool
 
-Check it out at: https://s3.amazonaws.com/survivorpool/public/index.html
+Check it out at: https://survivorpool.s3.amazonaws.com/public/index.html 
