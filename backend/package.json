@@ -1,16 +1,16 @@
 {
-  "name": "survivorpool",
+  "name": "survivorpool-backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "format": "./scripts/format.sh",
     "test": "./node_modules/.bin/jasmine-node spec/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.370.0",
-    "flatmap": "0.0.3",
     "jasmine-node": "^1.14.5",
     "survivorpool-core": "file:../core/survivorpool-core-1.0.0.tgz"
   }

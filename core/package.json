@@ -4,16 +4,22 @@
   "description": "survivorpool core functionality",
   "main": "index.js",
   "scripts": {
+    "format": "./scripts/format.sh",
     "test": "./node_modules/.bin/jasmine-node spec/"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/jschmidt10/survivor-pool/"
+    "url": "gitlab.com/jschmidt10/survivor-pool/"
   },
+  "files": [
+    "index.js",
+    "lib/"
+  ],
   "author": "jschmidt10",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.65.0",
-    "jasmine-node": "^1.14.5"
+    "flatmap": "0.0.3",
+    "jasmine-node": "^3.0.0"
   }
 }

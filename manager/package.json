@@ -4,6 +4,7 @@
   "description": "manager apps for administering survivorpool",
   "main": "index.js",
   "scripts": {
+    "format": "find . -name '*js' | grep -v node_modules | xargs -n1 -I{} js-beautify -j -r -e '\\n' {}",
     "test": "./node_modules/.bin/jasmine-node spec/"
   },
   "repository": {

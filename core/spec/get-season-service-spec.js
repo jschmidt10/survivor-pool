@@ -7,53 +7,34 @@ const SeasonService = require("../lib/season-service");
 let dynamo = DynamoFactory.newInstance();
 let testConfig = new AWSConfig("survivorpool", "test");
 
-describe("SeasonService", function () {
+describe("GetSeasonService", function () {
     let service = new SeasonService();
     let expectedSeason = {
         name: "Test Season",
         contestants: [{
                 name: "Bobby",
                 pic: "bobby.gif",
-                status: "active"
+                status: "Active"
             },
             {
                 name: "Susan",
                 pic: "susan.gif",
-                status: "active"
+                status: "Active"
             },
             {
                 name: "Tina",
                 pic: "tina.jpg",
-                status: "eliminated"
+                status: "Eliminated"
             }
         ]
     };
 
-    it("should get the current season", function (done) {
+    it("should return the current season", function (done) {
         dynamo
             .put(testDataPutRequest(testConfig))
             .promise()
             .then(res => service.get(testConfig))
             .then(season => expect(season).toEqual(expectedSeason))
-            .then(res => done())
-            .catch(err => {
-                this.fail(err);
-                done();
-            });
-    });
-
-    it("should eliminate a player", function (done) {
-        // Create a season with Susan eliminated.
-        let withSusanEliminated = expectedSeason;
-
-        withSusanEliminated.contestants.find(c => c.name == "Susan").status =
-            "eliminated";
-
-        dynamo
-            .put(testDataPutRequest(testConfig))
-            .promise()
-            .then(res => service.eliminate(testConfig, "Susan"))
-            .then(season => expect(season).toEqual(withSusanEliminated))
             .then(res => done())
             .catch(err => {
                 this.fail(err);
@@ -72,17 +53,17 @@ function testDataPutRequest(config) {
             contestants: [{
                     name: "Bobby",
                     pic: "bobby.gif",
-                    status: "active"
+                    status: "Active"
                 },
                 {
                     name: "Susan",
                     pic: "susan.gif",
-                    status: "active"
+                    status: "Active"
                 },
                 {
                     name: "Tina",
                     pic: "tina.jpg",
-                    status: "eliminated"
+                    status: "Eliminated"
                 }
             ]
         }
