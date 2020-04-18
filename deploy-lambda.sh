@@ -1,29 +1,42 @@
 #!/bin/bash
 #
-# Packages and deploys survivorpool-backend to AWS.
+# Deploys survivorpool-backend to AWS Lambda.
 
-cd backend/
-npm test
+set -o errexit
+set -o pipefail
 
-if [[ $? -ne 0 ]]
+if [[ $# -ne 1 ]]
 then
-  echo "There were test failures in backend"
+  echo "Missing required argument: <environment> (test or prod)"
   exit 1
 fi
 
-zip -r survivorpool-backend.zip *
+environment="$1"
+lambdaFunName=""
 
-if [[ $? -ne 0 ]]
+if [[ "${environment}" == "test" ]]
 then
-  echo "An error occurred while zipping backend"
-  exit 1
-fi
-
-aws lambda update-function-code --function-name survivorpool --zip-file fileb://survivorpool-backend.zip --publish
-
-if [[ $? -eq 0 ]]
+  lambdaFunName="survivorpool-test"
+elif [[ "${environment}" == "prod" ]]
 then
-  echo "Deployed successfully."
+  lambdaFunName="survivorpool"
 else
-  echo "An error occurred while uploading the latest code"
+  echo "Unrecognized environment: '${environment}'. Must be 'test' or 'prod'."
+  exit 1
+fi
+
+buildDir="dist"
+buildArtifact="survivorpool-backend.zip"
+fullArtifact="${buildDir}/${buildArtifact}"
+
+if [[ ! -f ${fullArtifact} ]]
+then
+  echo "You have not yet built ${fullArtifact}. Run build-js.sh first."
+  exit 1
+fi
+
+echo "Deploying ${fullArtifact} to AWS Lambda function ${lambdaFunName}"
+if aws lambda update-function-code --function-name ${lambdaFunName} --zip-file fileb://${fullArtifact} --publish
+then
+  echo "Success"
 fi

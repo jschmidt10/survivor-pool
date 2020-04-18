@@ -1,6 +1,7 @@
 "use strict";
 
 const core = require("survivorpool-core");
+
 const AWSConfig = core.AWSConfig;
 const DynamoFactory = core.DynamoFactory;
 const fs = require("fs");
