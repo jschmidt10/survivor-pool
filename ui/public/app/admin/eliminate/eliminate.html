@@ -1,0 +1,29 @@
+<h2>Eliminate a Contestant</h2>
+
+<p>Use this form to eliminate a player. This only works if you have the admin password.</p>
+
+<div class="form-horizontal create-pool-form">
+    <div class="form-group">
+        <label for="contestant" class="col-md-1">Contestant to Eliminate</label>
+        <div class="col-md-5">
+            <input type="text" class="form-control" value="" id="contestant" ng-model="contestant" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-md-1">Admin Password</label>
+        <div class="col-md-5">
+            <input type="password" class="form-control" value="" id="password" ng-model="password" />
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2 col-md-offset-1">
+            <button class="btn btn-primary" ng-click="eliminateContestant();">Submit</button>
+        </div>
+        <div class="col-md-4" ng-show="resultMessage">
+            <span class="alert alert-success success-text">{{resultMessage}}</span>
+        </div>
+        <div class="col-md-4" ng-show="errorMessage">
+            <span class="alert alert-danger error-text">{{errorMessage}}</span>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,10 @@
 set -o errexit
 set -o pipefail
 
+declare basedir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+cd ${basedir}
+
 if [[ $# -ne 1 ]]
 then
   echo "Missing required argument: <environment> (test or prod)"

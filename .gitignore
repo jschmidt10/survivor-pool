@@ -1,3 +1,5 @@
+dist/
+ui/dist/
 .vs/
 **/node_modules
 **/*.iml
