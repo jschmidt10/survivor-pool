@@ -13,24 +13,17 @@ cd ${basedir}
 buildDir="dist"
 buildArtifact="survivorpool-backend.zip"
 
+echo "Building core"
 cd core/
-echo "Running core unit tests"
 npm install
 npm test
-echo "Packing core"
 npm pack
 
-for module in backend manager
-do
-  cd ../${module}/
-
-  echo "Re-installing core into ${module}"
-  npm install ../core/survivorpool-core*.tgz
-
-  npm install
-  echo "Running ${module} unit tests"
-  npm test
-done
+echo "Building backend"
+cd ../backend/
+npm install ../core/survivorpool-core*.tgz
+npm install
+npm test
 
 echo "Packaging backend for AWS Lambda"
 cd ..

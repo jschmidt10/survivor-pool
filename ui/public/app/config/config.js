@@ -4,11 +4,11 @@ var module = angular.module("survivor.config", []);
 module.factory("appConfig", () => {
     return {
         rest: {
-            createPool: "https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/pool",
-            eliminateContestant: "https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/eliminate",
-            fetchSeason: "https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/season",
-            getPool: "https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/pool",
-            listPools: "https://bnwylviwi2.execute-api.us-east-1.amazonaws.com/prod/survivorpool/pool"
+            createPool: "{{ROOT_URL}}/pool",
+            eliminateContestant: "{{ROOT_URL}}/eliminate",
+            fetchSeason: "{{ROOT_URL}}/season",
+            getPool: "{{ROOT_URL}}/pool",
+            listPools: "{{ROOT_URL}}/pool"
         }
     };
 });

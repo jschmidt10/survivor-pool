@@ -4,7 +4,6 @@ set -o errexit
 set -o pipefail
 
 declare basedir="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-
 cd ${basedir}/..
 
 echo "Making a clean dist/ directory"
