@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.370.0",
+    "aws-sdk": "^2.814.0",
     "jasmine-node": "^1.14.5",
     "survivorpool-core": "file:../core/survivorpool-core-1.0.0.tgz"
   }
